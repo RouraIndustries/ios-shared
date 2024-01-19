@@ -1,7 +1,7 @@
 import XCTest
-@testable import RouraTools
+@testable import RouraFoundation
 
-final class RouraToolsTests: XCTestCase {
+final class RouraFoundationTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest
