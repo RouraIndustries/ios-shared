@@ -72,3 +72,27 @@ public extension Color {
     @TuxedoColor(uiColor: .overlay) static var overlay: Color
     @TuxedoColor(uiColor: .alwaysWhite) static var alwaysWhite: Color
 }
+
+// MARK: - Passthrough Semantic Colors
+
+public extension ShapeStyle where Self == Color {
+    static var backgroundPrimary: Color { Color.backgroundPrimary }
+    static var backgroundRaised: Color { Color.backgroundRaised }
+    static var backgroundRecessed: Color { Color.backgroundRecessed }
+
+    static var foregroundPrimary: Color { Color.foregroundPrimary }
+    static var foregroundSecondary: Color { Color.foregroundSecondary }
+    static var foregroundDisabled: Color { Color.foregroundDisabled }
+    static var foregroundTint: Color { Color.foregroundTint }
+
+    static var bluePrimary: Color { Color.bluePrimary }
+    static var greenPrimary: Color { Color.greenPrimary }
+    static var yellowPrimary: Color { Color.yellowPrimary }
+    static var orangePrimary: Color { Color.orangePrimary }
+    static var redPrimary: Color { Color.redPrimary }
+
+    static var shadow: Color { Color.shadow }
+    static var overlayDark: Color { Color.overlayDark }
+    static var overlay: Color { Color.overlay }
+    static var alwaysWhite: Color { Color.alwaysWhite }
+}
