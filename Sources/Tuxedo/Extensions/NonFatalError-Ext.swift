@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RouraFoundation
 
-extension NonFatalError {
+public extension NonFatalError {
     static func couldNotSolveLineSpacingQuadraticEquation(for font: UIFont) -> NonFatalError {
         let domain: String = "Could not determine line spacing"
         let code: Int = -1

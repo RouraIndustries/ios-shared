@@ -1,147 +1,193 @@
 //
 //  UIColor-Ext.swift
-//  
 //
-//  Created by Christopher J. Roura on 2/7/24.
+//
+//  Created by Christopher J. Roura on 3/13/24.
 //
 
 import UIKit
-import RouraFoundation
-
-// MARK: - Convenience Initializers
 
 public extension UIColor {
-    class func rgb(_ r: UIColorComponent, _ g: UIColorComponent, _ b: UIColorComponent, _ a: UIColorAlphaComponent = 1.0) -> UIColor {
-        UIColor(red: r.rawValue, green: g.rawValue, blue: b.rawValue, alpha: a.rawValue)
+    static func rgb(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat, alpha: Double = 1) -> UIColor {
+        UIColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: alpha)
     }
 
-    class func w(_ w: UIColorComponent, _ a: UIColorAlphaComponent = 1.0) -> UIColor {
-        UIColor(white: w.rawValue, alpha: a.rawValue)
-    }
-}
-
-// MARK: - Accessor Methods
-
-public extension UIColor {
-    class func value(_ valueColor: ValueColor) -> UIColor {
-        valueColor.components.uiColor
+    static func w(_ white: CGFloat, alpha: Double = 1) -> UIColor {
+        UIColor(white: white / 255, alpha: alpha)
     }
 
-    class func semantic(_ semanticColor: SemanticColor) -> UIColor {
-        UIColor.init { traitCollection -> UIColor in
-            semanticColor.valueComponents(for: traitCollection).uiColor
+    convenience init(
+        light lightModeColor: @escaping @autoclosure () -> UIColor,
+        lightHighContrast lightModeHighContrastColor: @escaping @autoclosure () -> UIColor,
+        dark darkModeColor: @escaping @autoclosure () -> UIColor,
+        darkHighContrast darkModeHighContrastColor: @escaping @autoclosure () -> UIColor
+    ) {
+        self.init { traitCollection in
+            switch traitCollection.userInterfaceStyle {
+            case .light:
+                return traitCollection.isHighContrastEnabled ? lightModeColor() : lightModeHighContrastColor()
+            case .dark:
+                return traitCollection.isHighContrastEnabled ? darkModeColor() : darkModeHighContrastColor()
+            case .unspecified:
+                return traitCollection.isHighContrastEnabled ? lightModeColor() : lightModeHighContrastColor()
+            @unknown default:
+                return traitCollection.isHighContrastEnabled ? lightModeColor() : lightModeHighContrastColor()
+            }
         }
     }
 }
 
-// MARK: - Property wrapper allowing for single-line passthrough definitions
-
-@propertyWrapper public class TuxedoUIColor {
-    public var wrappedValue: UIColor
-
-    init(valueColor: ValueColor) {
-        self.wrappedValue = UIColor.value(valueColor)
+public extension UIColor {
+    static var backgroundPrimary: UIColor {
+        UIColor(
+            light: ValueColor.white.component,
+            lightHighContrast: ValueColor.white.component,
+            dark: ValueColor.black.component,
+            darkHighContrast: ValueColor.black3.component
+        )
     }
 
-    init(semanticColor: SemanticColor) {
-        self.wrappedValue = UIColor.semantic(semanticColor)
+    static var backgroundRaised: UIColor {
+        UIColor(
+            light: ValueColor.white.component,
+            lightHighContrast: ValueColor.white.component,
+            dark: ValueColor.black4.component,
+            darkHighContrast: ValueColor.black4.component
+        )
     }
-}
 
-// MARK: - Passthrough Value Colors
+    static var backgroundRecessed: UIColor {
+        UIColor(
+            light: ValueColor.grey7.component,
+            lightHighContrast: ValueColor.grey7.component,
+            dark: ValueColor.black2.component,
+            darkHighContrast: ValueColor.black2.component
+        )
+    }
 
-public extension UIColor {
-    /**
-     * NOTE: Passthroughs for value colors have only been defined here for the ones that are (at the time of writing)
-     * currently used in the Consumer and Runner apps. Long term, all apps should use the semantic color passthroughs
-     * exclusively, allowing us to delete all of these value passthroughs.
-     */
+    static var foregroundPrimary: UIColor {
+        UIColor(
+            light: ValueColor.black4.component,
+            lightHighContrast: ValueColor.black4.component,
+            dark: ValueColor.grey7.component,
+            darkHighContrast: ValueColor.grey7.component
+        )
+    }
 
-    @TuxedoUIColor(valueColor: .blue1) @objc static var blue1: UIColor
-    @TuxedoUIColor(valueColor: .blue2) @objc static var blue2: UIColor
-    @TuxedoUIColor(valueColor: .blue3) @objc static var blue3: UIColor
-    @TuxedoUIColor(valueColor: .blue4) @objc static var blue4: UIColor
-    @TuxedoUIColor(valueColor: .blue5) @objc static var blue5: UIColor
-    @TuxedoUIColor(valueColor: .blue6) @objc static var blue6: UIColor
-    @TuxedoUIColor(valueColor: .blue7) @objc static var blue7: UIColor
-    @TuxedoUIColor(valueColor: .blue8) @objc static var blue8: UIColor
+    static var foregroundSecondary: UIColor {
+        UIColor(
+            light: ValueColor.grey1.component,
+            lightHighContrast: ValueColor.grey1.component,
+            dark: ValueColor.grey4.component,
+            darkHighContrast: ValueColor.grey4.component
+        )
+    }
 
-    @TuxedoUIColor(valueColor: .green1) @objc static var green1: UIColor
-    @TuxedoUIColor(valueColor: .green2) @objc static var green2: UIColor
-    @TuxedoUIColor(valueColor: .green3) @objc static var green3: UIColor
-    @TuxedoUIColor(valueColor: .green4) @objc static var green4: UIColor
-    @TuxedoUIColor(valueColor: .green5) @objc static var green5: UIColor
-    @TuxedoUIColor(valueColor: .green6) @objc static var green6: UIColor
-    @TuxedoUIColor(valueColor: .green7) @objc static var green7: UIColor
-    @TuxedoUIColor(valueColor: .green8) @objc static var green8: UIColor
+    static var foregroundDisabled: UIColor {
+        UIColor(
+            light: ValueColor.grey3.component,
+            lightHighContrast: ValueColor.grey3.component,
+            dark: ValueColor.black7.component,
+            darkHighContrast: ValueColor.black7.component
+        )
+    }
 
-    @TuxedoUIColor(valueColor: .yellow1) @objc static var yellow1: UIColor
-    @TuxedoUIColor(valueColor: .yellow2) @objc static var yellow2: UIColor
-    @TuxedoUIColor(valueColor: .yellow3) @objc static var yellow3: UIColor
-    @TuxedoUIColor(valueColor: .yellow4) @objc static var yellow4: UIColor
-    @TuxedoUIColor(valueColor: .yellow5) @objc static var yellow5: UIColor
-    @TuxedoUIColor(valueColor: .yellow6) @objc static var yellow6: UIColor
-    @TuxedoUIColor(valueColor: .yellow7) @objc static var yellow7: UIColor
-    @TuxedoUIColor(valueColor: .yellow8) @objc static var yellow8: UIColor
+    static var foregroundTint: UIColor {
+        UIColor(
+            light: ValueColor.grey6.component,
+            lightHighContrast: ValueColor.grey6.component,
+            dark: ValueColor.black5.component,
+            darkHighContrast: ValueColor.black5.component
+        )
+    }
 
-    @TuxedoUIColor(valueColor: .orange1) @objc static var orange1: UIColor
-    @TuxedoUIColor(valueColor: .orange2) @objc static var orange2: UIColor
-    @TuxedoUIColor(valueColor: .orange3) @objc static var orange3: UIColor
-    @TuxedoUIColor(valueColor: .orange4) @objc static var orange4: UIColor
-    @TuxedoUIColor(valueColor: .orange5) @objc static var orange5: UIColor
-    @TuxedoUIColor(valueColor: .orange6) @objc static var orange6: UIColor
-    @TuxedoUIColor(valueColor: .orange7) @objc static var orange7: UIColor
-    @TuxedoUIColor(valueColor: .orange8) @objc static var orange8: UIColor
+    static var bluePrimary: UIColor {
+        UIColor(
+            light: ValueColor.blue2.component,
+            lightHighContrast: ValueColor.blue1.component,
+            dark: ValueColor.blue4.component,
+            darkHighContrast: ValueColor.blue4.component
+        )
+    }
 
-    @TuxedoUIColor(valueColor: .red1) @objc static var red1: UIColor
-    @TuxedoUIColor(valueColor: .red2) @objc static var red2: UIColor
-    @TuxedoUIColor(valueColor: .red3) @objc static var red3: UIColor
-    @TuxedoUIColor(valueColor: .red4) @objc static var red4: UIColor
-    @TuxedoUIColor(valueColor: .red5) @objc static var red5: UIColor
-    @TuxedoUIColor(valueColor: .red6) @objc static var red6: UIColor
-    @TuxedoUIColor(valueColor: .red7) @objc static var red7: UIColor
-    @TuxedoUIColor(valueColor: .red8) @objc static var red8: UIColor
+    static var greenPrimary: UIColor {
+        UIColor(
+            light: ValueColor.green1.component,
+            lightHighContrast: ValueColor.green1.component,
+            dark: ValueColor.green3.component,
+            darkHighContrast: ValueColor.green3.component
+        )
+    }
 
-    @TuxedoUIColor(valueColor: .grey1) @objc static var grey1: UIColor
-    @TuxedoUIColor(valueColor: .grey2) @objc static var grey2: UIColor
-    @TuxedoUIColor(valueColor: .grey3) @objc static var grey3: UIColor
-    @TuxedoUIColor(valueColor: .grey4) @objc static var grey4: UIColor
-    @TuxedoUIColor(valueColor: .grey5) @objc static var grey5: UIColor
-    @TuxedoUIColor(valueColor: .grey6) @objc static var grey6: UIColor
-    @TuxedoUIColor(valueColor: .grey7) @objc static var grey7: UIColor
-    @TuxedoUIColor(valueColor: .grey8) @objc static var grey8: UIColor
+    static var yellowPrimary: UIColor {
+        UIColor(
+            light: ValueColor.yellow1.component,
+            lightHighContrast: ValueColor.yellow1.component,
+            dark: ValueColor.yellow3.component,
+            darkHighContrast: ValueColor.yellow3.component
+        )
+    }
 
-    @TuxedoUIColor(valueColor: .black0) @objc static var black0: UIColor
-    @TuxedoUIColor(valueColor: .black1) @objc static var black1: UIColor
-    @TuxedoUIColor(valueColor: .black2) @objc static var black2: UIColor
-    @TuxedoUIColor(valueColor: .black3) @objc static var black3: UIColor
-    @TuxedoUIColor(valueColor: .black4) @objc static var black4: UIColor
-    @TuxedoUIColor(valueColor: .black5) @objc static var black5: UIColor
-    @TuxedoUIColor(valueColor: .black6) @objc static var black6: UIColor
-    @TuxedoUIColor(valueColor: .black7) @objc static var black7: UIColor
-    @TuxedoUIColor(valueColor: .black8) @objc static var black8: UIColor
-}
+    static var orangePrimary: UIColor {
+        UIColor(
+            light: ValueColor.orange1.component,
+            lightHighContrast: ValueColor.orange1.component,
+            dark: ValueColor.orange1.component,
+            darkHighContrast: ValueColor.orange1.component
+        )
+    }
 
-// MARK: - Passthrough Semantic Colors
+    static var redPrimary: UIColor {
+        UIColor(
+            light: ValueColor.red1.component,
+            lightHighContrast: ValueColor.red1.component,
+            dark: ValueColor.red3.component,
+            darkHighContrast: ValueColor.red3.component
+        )
+    }
 
-public extension UIColor {
-    @TuxedoUIColor(semanticColor: .backgroundPrimary) @objc static var backgroundPrimary: UIColor
-    @TuxedoUIColor(semanticColor: .backgroundRaised) @objc static var backgroundRaised: UIColor
-    @TuxedoUIColor(semanticColor: .backgroundRecessed) @objc static var backgroundRecessed: UIColor
+    static var midnightPrimary: UIColor {
+        UIColor(
+            light: ValueColor.blue3.component,
+            lightHighContrast: ValueColor.blue3.component,
+            dark: ValueColor.blue3.component,
+            darkHighContrast: ValueColor.blue3.component
+        )
+    }
 
-    @TuxedoUIColor(semanticColor: .foregroundPrimary) @objc static var foregroundPrimary: UIColor
-    @TuxedoUIColor(semanticColor: .foregroundSecondary) @objc static var foregroundSecondary: UIColor
-    @TuxedoUIColor(semanticColor: .foregroundDisabled) @objc static var foregroundDisabled: UIColor
-    @TuxedoUIColor(semanticColor: .foregroundTint) @objc static var foregroundTint: UIColor
+    static var shadow: UIColor {
+        UIColor(
+            light: ValueColor.black1.component.withAlphaComponent(0.16),
+            lightHighContrast: ValueColor.black1.component.withAlphaComponent(0.16),
+            dark: ValueColor.black0.component.withAlphaComponent(0.95),
+            darkHighContrast: ValueColor.black0.component.withAlphaComponent(0.95)
+        )
+    }
 
-    @TuxedoUIColor(semanticColor: .bluePrimary) @objc static var bluePrimary: UIColor
-    @TuxedoUIColor(semanticColor: .greenPrimary) @objc static var greenPrimary: UIColor
-    @TuxedoUIColor(semanticColor: .yellowPrimary) @objc static var yellowPrimary: UIColor
-    @TuxedoUIColor(semanticColor: .orangePrimary) @objc static var orangePrimary: UIColor
-    @TuxedoUIColor(semanticColor: .redPrimary) @objc static var redPrimary: UIColor
+    static var overlay: UIColor {
+        UIColor(
+            light: ValueColor.white.component.withAlphaComponent(0.9),
+            lightHighContrast: ValueColor.white.component.withAlphaComponent(0.9),
+            dark: ValueColor.black3.component.withAlphaComponent(0.9),
+            darkHighContrast: ValueColor.black3.component.withAlphaComponent(0.9)
+        )
+    }
 
-    @TuxedoUIColor(semanticColor: .shadow) @objc static var shadow: UIColor
-    @TuxedoUIColor(semanticColor: .overlayDark) @objc static var overlayDark: UIColor
-    @TuxedoUIColor(semanticColor: .overlay) @objc static var overlay: UIColor
-    @TuxedoUIColor(semanticColor: .alwaysWhite) @objc static var alwaysWhite: UIColor
+    static var overlayDark: UIColor {
+        UIColor(
+            light: ValueColor.black4.component.withAlphaComponent(0.16),
+            lightHighContrast: ValueColor.black4.component.withAlphaComponent(0.16),
+            dark: ValueColor.black0.component.withAlphaComponent(0.75),
+            darkHighContrast: ValueColor.black0.component.withAlphaComponent(0.75)
+        )
+    }
+
+    static var whitePrimary: UIColor {
+        UIColor(
+            light: ValueColor.white.component,
+            lightHighContrast: ValueColor.white.component,
+            dark: ValueColor.white.component,
+            darkHighContrast: ValueColor.white.component
+        )
+    }
 }

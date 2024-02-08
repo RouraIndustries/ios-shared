@@ -1,165 +1,43 @@
 //
 //  ValueColor.swift
-//  
 //
-//  Created by Christopher J. Roura on 2/7/24.
+//
+//  Created by Christopher J. Roura on 3/13/24.
 //
 
 import UIKit
 
 public enum ValueColor: CaseIterable {
-    case blue1
-    case blue2
-    case blue3
-    case blue4
-    case blue5
-    case blue6
-    case blue7
-    case blue8
+    // Blue
+    case blue1, blue2, blue3, blue4, blue5, blue6, blue7, blue8, blue9
+    // Green
+    case green1, green2, green3, green4, green5, green6, green7, green8, green9, green10
+    // Yellow
+    case yellow1, yellow2, yellow3, yellow4, yellow5, yellow6, yellow7, yellow8
+    // Orange
+    case orange1, orange2, orange3, orange4, orange5, orange6, orange7, orange8
+    // Red
+    case red1, red2, red3, red4, red5, red6, red7, red8, red9, red10
+    // Grey
+    case grey1, grey2, grey3, grey4, grey5, grey6, grey7, grey8
+    // Black
+    case black0, black1, black2, black3, black4, black5, black6, black7, black8
 
-    case green1
-    case green2
-    case green3
-    case green4
-    case green5
-    case green6
-    case green7
-    case green8
-
-    case yellow1
-    case yellow2
-    case yellow3
-    case yellow4
-    case yellow5
-    case yellow6
-    case yellow7
-    case yellow8
-
-    case orange1
-    case orange2
-    case orange3
-    case orange4
-    case orange5
-    case orange6
-    case orange7
-    case orange8
-
-    case red1
-    case red2
-    case red3
-    case red4
-    case red5
-    case red6
-    case red7
-    case red8
-
-    case grey1
-    case grey2
-    case grey3
-    case grey4
-    case grey5
-    case grey6
-    case grey7
-    case grey8
-
-    case black0
-    case black1
-    case black2
-    case black3
-    case black4
-    case black5
-    case black6
-    case black7
-    case black8
-
-    case white
-    case black
+    case white, black
 }
-
-// MARK: - Descriptors
-
-public extension ValueColor {
-    var name: String {
-        String(describing: self)
-    }
-
-    var description: String {
-        components.description
-    }
-}
-
-// MARK: - Components
 
 internal extension ValueColor {
-    enum Components {
-        case rgb(_ r: UIColorComponent, _ g: UIColorComponent, _ b: UIColorComponent)
-        case rgba(_ r: UIColorComponent, _ g: UIColorComponent, _ b: UIColorComponent, _ a: UIColorAlphaComponent)
-        case w(_ w: UIColorComponent)
-        case wa(_ w: UIColorComponent, _ a: UIColorAlphaComponent)
-
-        func opacity(_ a: UIColorAlphaComponent) -> Self {
-            switch self {
-            case .rgb(let r, let g, let b):
-                return a == 1.0 ? self : .rgba(r, g, b, a)
-            
-            case .rgba(let r, let g, let b, _):
-                return a == 1.0 ? .rgb(r, g, b) : .rgba(r, g, b, a)
-            
-            case .w(let w):
-                return a == 1.0 ? self : .wa(w, a)
-            
-            case .wa(let w, _):
-                return a == 1.0 ? .w(w) : .wa(w, a)
-            }
-        }
-
-        var uiColor: UIColor {
-            switch self {
-            case .rgb(let r, let g, let b):
-                return UIColor.rgb(r, g, b)
-            
-            case .rgba(let r, let g, let b, let a):
-                return UIColor.rgb(r, g, b, a)
-            
-            case .w(let w):
-                return UIColor.w(w)
-            
-            case .wa(let w, let a):
-                return UIColor.w(w, a)
-            }
-        }
-
-        var description: String {
-            switch self {
-            case .rgb(let r, let g, let b):
-                return String(format: "rgb(%i, %i, %i)", r, g, b)
-            
-            case .rgba(let r, let g, let b, let a):
-                return String(format: "rgba(%i, %i, %i, %.2f)", r, g, b, a.rawValue)
-            
-            case .w(let w):
-                return String(format: "w(%i)", w)
-            
-            case .wa(let w, let a):
-                return String(format: "wa(%i, %.2f)", w, a.rawValue)
-            }
-        }
-    }
-}
-
-// MARK: - Definitions
-
-internal extension ValueColor {
-    var components: Components {
+    var component: UIColor {
         switch self {
         case .blue1:    return .rgb(14, 110, 180)
         case .blue2:    return .rgb(0, 153, 229)
-        case .blue3:    return .rgb(73, 179, 230)
-        case .blue4:    return .rgb(130, 197, 236)
-        case .blue5:    return .rgb(175, 216, 242)
-        case .blue6:    return .rgb(215, 235, 248)
-        case .blue7:    return .rgb(234, 244, 251)
-        case .blue8:    return .rgb(239, 248, 255)
+        case .blue3:    return .rgb(64, 89, 115)
+        case .blue4:    return .rgb(73, 179, 230)
+        case .blue5:    return .rgb(130, 197, 236)
+        case .blue6:    return .rgb(175, 216, 242)
+        case .blue7:    return .rgb(215, 235, 248)
+        case .blue8:    return .rgb(234, 244, 251)
+        case .blue9:    return .rgb(239, 248, 255)
 
         case .green1:   return .rgb(72, 168, 42)
         case .green2:   return .rgb(106, 191, 79)
@@ -169,6 +47,8 @@ internal extension ValueColor {
         case .green6:   return .rgb(215, 240, 204)
         case .green7:   return .rgb(222, 242, 212)
         case .green8:   return .rgb(227, 247, 217)
+        case .green9:   return .rgb(0, 71, 61)
+        case .green10:  return .rgb(0, 235, 199)
 
         case .yellow1:  return .rgb(255, 213, 0)
         case .yellow2:  return .rgb(254, 217, 33)
@@ -188,14 +68,16 @@ internal extension ValueColor {
         case .orange7:  return .rgb(255, 221, 194)
         case .orange8:  return .rgb(255, 228, 206)
 
-        case .red1: return .rgb(214, 14, 0)
-        case .red2: return .rgb(227, 43, 30)
-        case .red3: return .rgb(238, 98, 88)
-        case .red4: return .rgb(246, 144, 136)
-        case .red5: return .rgb(251, 175, 169)
-        case .red6: return .rgb(254, 193, 189)
-        case .red7: return .rgb(255, 203, 199)
-        case .red8: return .rgb(255, 213, 209)
+        case .red1:     return .rgb(214, 14, 0)
+        case .red2:     return .rgb(227, 43, 30)
+        case .red3:     return .rgb(238, 98, 88)
+        case .red4:     return .rgb(246, 144, 136)
+        case .red5:     return .rgb(251, 175, 169)
+        case .red6:     return .rgb(254, 193, 189)
+        case .red7:     return .rgb(255, 203, 199)
+        case .red8:     return .rgb(255, 213, 209)
+        case .red9:     return .rgb(255, 45, 85)
+        case .red10:    return .rgb(255, 55, 95)
 
         case .grey1:    return .rgb(91, 102, 112)
         case .grey2:    return .rgb(151, 163, 174)

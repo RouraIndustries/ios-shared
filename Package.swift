@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "RouraTools",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v15)
     ],
     products: [
         .library(
@@ -19,12 +19,6 @@ let package = Package(
             name: "Tuxedo",
             targets: [
                 "Tuxedo"
-            ]
-        ),
-        .library(
-            name: "RouraUIKit",
-            targets: [
-                "RouraUIKit"
             ]
         ),
         .library(
@@ -59,19 +53,6 @@ let package = Package(
             name: "TuxedoTests",
             dependencies: [
                 "Tuxedo"
-            ]
-        ),
-        .target(
-            name: "RouraUIKit",
-            dependencies: [
-                "RouraFoundation",
-                "Tuxedo"
-            ]
-        ),
-        .testTarget(
-            name: "RouraUIKitTests",
-            dependencies: [
-                "RouraUIKit"
             ]
         ),
         .target(

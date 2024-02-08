@@ -1,14 +1,14 @@
 //
-//  RouraFoundationTests.swift
-//
+//  RouraSwiftUITests.swift
+//  
 //
 //  Created by Christopher J. Roura on 3/13/24.
 //
 
 import XCTest
-@testable import RouraFoundation
+@testable import RouraSwiftUI
 
-final class RouraFoundationTests: XCTestCase {
+final class RouraSwiftUITests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest

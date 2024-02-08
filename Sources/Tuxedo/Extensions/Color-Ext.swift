@@ -2,97 +2,95 @@
 //  Color-Ext.swift
 //
 //
-//  Created by Christopher J. Roura on 2/7/24.
+//  Created by Christopher J. Roura on 3/13/24.
 //
 
 import SwiftUI
 
-/// The way to convert a UIColor to a SwiftUI Color changed in iOS 15.  This property wrapper does the work of using the proper initiailzer based on the OS.
-@propertyWrapper public struct TuxedoColor {
-    public var wrappedValue: Color {
-        get {
-            if #available(iOS 15.0, *) {
-                return Color(uiColor: uiColor)
-            } else {
-                return Color(uiColor)
-            }
-        }
-    }
-    private var uiColor: UIColor
-
-    init(uiColor: UIColor) {
-        self.uiColor = uiColor
+public extension Color {
+    init(
+        light lightModeColor: @escaping @autoclosure () -> Color,
+        lightHighContrast lightModeHighContrastColor: @escaping @autoclosure () -> Color,
+        dark darkModeColor: @escaping @autoclosure () -> Color,
+        darkHighContrast darkModeHighContrastColor: @escaping @autoclosure () -> Color
+    ) {
+        self.init(
+            UIColor(
+                light: UIColor(lightModeColor()),
+                lightHighContrast: UIColor(lightModeHighContrastColor()),
+                dark: UIColor(darkModeColor()),
+                darkHighContrast: UIColor(darkModeHighContrastColor())
+            )
+        )
     }
 }
-
-// MARK: - Accessor Methods
 
 public extension Color {
-    static func value(_ valueColor: ValueColor) -> Color {
-        let uiColor = UIColor.value(valueColor)
-
-        if #available(iOS 15.0, *) {
-            return Color(uiColor: uiColor)
-        } else {
-            return Color(uiColor)
-        }
+    static var backgroundPrimary: Color {
+        Color(uiColor: .backgroundPrimary)
     }
 
-    static func semantic(_ semanticColor: SemanticColor) -> Color {
-        let uiColor = UIColor.semantic(semanticColor)
-
-        if #available(iOS 15.0, *) {
-            return Color(uiColor: uiColor)
-        } else {
-            return Color(uiColor)
-        }
+    static var backgroundRaised: Color {
+        Color(uiColor: .backgroundRaised)
     }
-}
 
-// MARK: - Passthrough Semantic Colors
+    static var backgroundRecessed: Color {
+        Color(uiColor: .backgroundRecessed)
+    }
 
-public extension Color {
-    @TuxedoColor(uiColor: .backgroundPrimary) static var backgroundPrimary: Color
-    @TuxedoColor(uiColor: .backgroundRaised) static var backgroundRaised: Color
-    @TuxedoColor(uiColor: .backgroundRecessed) static var backgroundRecessed: Color
+    static var foregroundPrimary: Color {
+        Color(uiColor: .foregroundPrimary)
+    }
 
-    @TuxedoColor(uiColor: .foregroundPrimary) static var foregroundPrimary: Color
-    @TuxedoColor(uiColor: .foregroundSecondary) static var foregroundSecondary: Color
-    @TuxedoColor(uiColor: .foregroundDisabled) static var foregroundDisabled: Color
-    @TuxedoColor(uiColor: .foregroundTint) static var foregroundTint: Color
+    static var foregroundSecondary: Color {
+        Color(uiColor: .foregroundSecondary)
+    }
 
-    @TuxedoColor(uiColor: .bluePrimary) static var bluePrimary: Color
-    @TuxedoColor(uiColor: .greenPrimary) static var greenPrimary: Color
-    @TuxedoColor(uiColor: .yellowPrimary) static var yellowPrimary: Color
-    @TuxedoColor(uiColor: .orangePrimary) static var orangePrimary: Color
-    @TuxedoColor(uiColor: .redPrimary) static var redPrimary: Color
+    static var foregroundDisabled: Color {
+        Color(uiColor: .foregroundDisabled)
+    }
 
-    @TuxedoColor(uiColor: .shadow) static var shadow: Color
-    @TuxedoColor(uiColor: .overlayDark) static var overlayDark: Color
-    @TuxedoColor(uiColor: .overlay) static var overlay: Color
-    @TuxedoColor(uiColor: .alwaysWhite) static var alwaysWhite: Color
-}
+    static var foregroundTint: Color {
+        Color(uiColor: .foregroundTint)
+    }
 
-// MARK: - Passthrough Semantic Colors
+    static var bluePrimary: Color {
+        Color(uiColor: .bluePrimary)
+    }
 
-public extension ShapeStyle where Self == Color {
-    static var backgroundPrimary: Color { Color.backgroundPrimary }
-    static var backgroundRaised: Color { Color.backgroundRaised }
-    static var backgroundRecessed: Color { Color.backgroundRecessed }
+    static var greenPrimary: Color {
+        Color(uiColor: .greenPrimary)
+    }
 
-    static var foregroundPrimary: Color { Color.foregroundPrimary }
-    static var foregroundSecondary: Color { Color.foregroundSecondary }
-    static var foregroundDisabled: Color { Color.foregroundDisabled }
-    static var foregroundTint: Color { Color.foregroundTint }
+    static var yellowPrimary: Color {
+        Color(uiColor: .yellowPrimary)
+    }
 
-    static var bluePrimary: Color { Color.bluePrimary }
-    static var greenPrimary: Color { Color.greenPrimary }
-    static var yellowPrimary: Color { Color.yellowPrimary }
-    static var orangePrimary: Color { Color.orangePrimary }
-    static var redPrimary: Color { Color.redPrimary }
+    static var orangePrimary: Color {
+        Color(uiColor: .orangePrimary)
+    }
 
-    static var shadow: Color { Color.shadow }
-    static var overlayDark: Color { Color.overlayDark }
-    static var overlay: Color { Color.overlay }
-    static var alwaysWhite: Color { Color.alwaysWhite }
+    static var redPrimary: Color {
+        Color(uiColor: .redPrimary)
+    }
+
+    static var midnightPrimary: Color {
+        Color(uiColor: .midnightPrimary)
+    }
+
+    static var shadow: Color {
+        Color(uiColor: .shadow)
+    }
+
+    static var overlay: Color {
+        Color(uiColor: .overlay)
+    }
+
+    static var overlayDark: Color {
+        Color(uiColor: .overlayDark)
+    }
+
+    static var whitePrimary: Color {
+        Color(uiColor: .whitePrimary)
+    }
 }
