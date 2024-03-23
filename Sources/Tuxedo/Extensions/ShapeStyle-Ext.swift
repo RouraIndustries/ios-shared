@@ -8,71 +8,99 @@
 import SwiftUI
 
 public extension ShapeStyle where Self == Color {
+    // MARK: - Accent
+
+    static var accentPrimary: Color {
+        Color(.accentPrimary)
+    }
+
+    static var devAccentPrimary: Color {
+        Color(.devAccentPrimary)
+    }
+
+    static var qaAccentPrimary: Color {
+        Color(.qaAccentPrimary)
+    }
+
+    // MARK: - Background
+
     static var backgroundPrimary: Color {
-        .backgroundPrimary
+        Color(.backgroundPrimary)
     }
 
     static var backgroundRaised: Color {
-        .backgroundRaised
+        Color(.backgroundRaised)
     }
 
     static var backgroundRecessed: Color {
-        .backgroundRecessed
+        Color(.backgroundRecessed)
+    }
+
+    // MARK: - Foreground
+
+    static var foregroundDisabled: Color {
+        Color(.foregroundDisabled)
     }
 
     static var foregroundPrimary: Color {
-        .foregroundPrimary
+        Color(.foregroundPrimary)
     }
 
     static var foregroundSecondary: Color {
-        .foregroundSecondary
-    }
-
-    static var foregroundDisabled: Color {
-        .foregroundDisabled
+        Color(.foregroundSecondary)
     }
 
     static var foregroundTint: Color {
-        .foregroundTint
+        Color(.foregroundTint)
     }
 
+    // MARK: - Overlay
+
+    static var overlayDark: Color {
+        Color(.overlayDark)
+    }
+
+    static var overlayLight: Color {
+        Color(.overlayLight)
+    }
+
+    // MARK: - Primary
+
     static var bluePrimary: Color {
-        .bluePrimary
+        Color(.bluePrimary)
     }
 
     static var greenPrimary: Color {
-        .greenPrimary
-    }
-
-    static var yellowPrimary: Color {
-        .yellowPrimary
-    }
-
-    static var orangePrimary: Color {
-        .orangePrimary
-    }
-
-    static var redPrimary: Color {
-        .redPrimary
+        Color(.greenPrimary)
     }
 
     static var midnightPrimary: Color {
-        .midnightPrimary
+        Color(.midnightPrimary)
     }
 
-    static var shadow: Color {
-        .shadow
+    static var orangePrimary: Color {
+        Color(.orangePrimary)
     }
 
-    static var overlay: Color {
-        .overlay
+    static var purplePrimary: Color {
+        Color(.purplePrimary)
     }
 
-    static var overlayDark: Color {
-        .overlayDark
+    static var redPrimary: Color {
+        Color(.redPrimary)
     }
 
     static var whitePrimary: Color {
-        .whitePrimary
+        Color(.whitePrimary)
+    }
+
+    static var yellowPrimary: Color {
+        Color(.yellowPrimary)
+    }
+
+    // MARK: - Shadow
+
+    static var shadow: Color {
+        Color(.shadow)
     }
 }
