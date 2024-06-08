@@ -7,33 +7,52 @@
 
 import SwiftUI
 
-/// Enumeration of font style options that can be applied to Roura fonts.
 public enum FontOption {
-    /// Small caps variant of the font.
-    case smallCaps
-
-    /// Lowercase small caps variant of the font.
+    case small
     case lowercaseSmallCaps
-
-    /// Uppercase small caps variant of the font.
     case uppercaseCaps
-
-    /// Italic variant of the font.
     case italic
-
-    /// Bold variant of the font.
     case bold
+}
 
-    /**
-     Applies the font option to a given `Font`.
+public extension View {
+    func tuxedoFont(_ style: TuxedoFontStyle, fontFamily: TuxedoFontFamily = .montserrat, useScaledFonts: Bool = true, option: FontOption? = nil) -> some View {
+        self.font(.tuxedoFont(style, fontFamily: fontFamily, useScaledFonts: useScaledFonts, option: option))
+    }
+}
 
-     - Parameters:
-        - font: The original `Font` object.
-     - Returns: A `Font` object with the specified option applied.
-     */
-    func apply(to font: Font) -> Font {
-        switch self {
-        case .smallCaps: return font.smallCaps()
+public extension Text {
+    func tuxedoFont(_ style: TuxedoFontStyle, fontFamily: TuxedoFontFamily = .montserrat, useScaledFonts: Bool = true, option: FontOption? = nil) -> Text {
+        self.font(.tuxedoFont(style, fontFamily: fontFamily, useScaledFonts: useScaledFonts, option: option))
+    }
+}
+
+public extension Font {
+    static func tuxedoFont(_ style: TuxedoFontStyle, fontFamily: TuxedoFontFamily = .montserrat, useScaledFonts: Bool = true, option: FontOption? = nil) -> Font {
+        if !didRegisterCutomFonts {
+            registerCustomFonts()
+        }
+
+        if let option {
+            if useScaledFonts {
+                var font = Font.custom(style.fontName(for: fontFamily).rawValue, size: style.pointSize, relativeTo: style.textStyle)
+                return set(font: font, with: option)
+            } else {
+                var font = Font.custom(style.fontName(for: fontFamily).rawValue, fixedSize: style.pointSize)
+                return set(font: font, with: option)
+            }
+        } else {
+            if useScaledFonts {
+                return Font.custom(style.fontName(for: fontFamily).rawValue, size: style.pointSize, relativeTo: style.textStyle)
+            } else {
+                return Font.custom(style.fontName(for: fontFamily).rawValue, fixedSize: style.pointSize)
+            }
+        }
+    }
+
+    private static func set(font: Font, with option: FontOption) -> Font {
+        switch option {
+        case .small: return font.smallCaps()
         case .lowercaseSmallCaps: return font.lowercaseSmallCaps()
         case .uppercaseCaps: return font.uppercaseSmallCaps()
         case .italic: return font.italic()
@@ -42,187 +61,30 @@ public enum FontOption {
     }
 }
 
-/// Extension for applying Roura fonts to SwiftUI views.
-public extension View {
-
-    /**
-     Applies a Roura font to the view.
-
-     - Parameters:
-        - fontStyle: The Roura font style to be used.
-        - fontFamily: The Roura font family (default: Montserrat).
-        - useScaledFont: Whether to use the scaled font (default: true).
-        - option: An optional `FontOption` to modify the font style.
-     - Returns: A view with the specified Roura font and style option applied.
-     */
-    func rouraFont(_ fontStyle: RouraFontStyle, fontFamily: RouraFontFamily = .montserrat, useScaledFont: Bool = true, option: FontOption? = nil) -> some View {
-
-        let baseFont: Font
-
-        switch fontStyle {
-        case .h2: baseFont = Font.tuxedoH2
-        case .h3: baseFont = Font.tuxedoH3
-        case .h4: baseFont = Font.tuxedoH4
-        case .h5: baseFont = Font.tuxedoH5
-        case .h5Light: baseFont = Font.tuxedoH5Light
-        case .h5Bold: baseFont = Font.tuxedoH5Bold
-        case .body: baseFont = Font.tuxedoBody
-        case .bodyBold: baseFont = Font.tuxedoBodyBold
-        case .caption: baseFont = Font.tuxedoCaption
-        case .captionBold: baseFont = Font.tuxedoCaptionBold
-        case .captionExtraBold: baseFont = Font.tuxedoCaptionExtraBold
-        case .tiny: baseFont = Font.tuxedoTiny
-        }
-
-        let appliedFont = option?.apply(to: baseFont) ?? baseFont
-        return font(appliedFont)
-    }
+public enum TuxedoFontFamily {
+    case lexend
+    case montserrat
 }
 
-/// Extension for applying Roura fonts to SwiftUI Text views.
-public extension Text {
+public enum TuxedoFontName: String, CaseIterable {
+    // Lexend Styles
+    case lexendThin = "Lexend-Thin"
+    case lexendExtraLight = "Lexend-ExtraLight"
+    case lexendMedium = "Lexend-Medium"
+    case lexendBold = "Lexend-Bold"
 
-    /**
-     Applies a Roura font to the text.
+    // Montserrat Styles
+    case montserratRegular = "Montserrat-Regular"
+    case montserratSemiBold = "Montserrat-SemiBold"
+    case montserratExtraBold = "Montserrat-ExtraBold"
 
-     - Parameters:
-        - fontStyle: The Roura font style to be used.
-        - fontFamily: The Roura font family (default: Montserrat).
-        - useScaledFont: Whether to use the scaled font (default: true).
-        - option: An optional `FontOption` to modify the font style.
-     - Returns: A text view with the specified Roura font and style option applied.
-     */
-    func rouraFont(_ fontStyle: RouraFontStyle, fontFamily: RouraFontFamily = .montserrat, useScaledFont: Bool = true, option: FontOption? = nil) -> Text {
-
-        let baseFont: Font
-
-        switch fontStyle {
-        case .h2: baseFont = Font.tuxedoH2
-        case .h3: baseFont = Font.tuxedoH3
-        case .h4: baseFont = Font.tuxedoH4
-        case .h5: baseFont = Font.tuxedoH5
-        case .h5Light: baseFont = Font.tuxedoH5Light
-        case .h5Bold: baseFont = Font.tuxedoH5Bold
-        case .body: baseFont = Font.tuxedoBody
-        case .bodyBold: baseFont = Font.tuxedoBodyBold
-        case .caption: baseFont = Font.tuxedoCaption
-        case .captionBold: baseFont = Font.tuxedoCaptionBold
-        case .captionExtraBold: baseFont = Font.tuxedoCaptionExtraBold
-        case .tiny: baseFont = Font.tuxedoTiny
-        }
-
-        let appliedFont = option?.apply(to: baseFont) ?? baseFont
-        return font(appliedFont)
-    }
-}
-
-import SwiftUI
-
-extension Font.TextStyle {
-
-    /// Create a Font.TextStyle that maps to the closest correpsonding UIFont.TextStyle
-    /// - Parameter style: The UIFont.TextStyle that you need a corresponding Font.TextStyle for.
-    init(with style: UIFont.TextStyle) {
-        switch style {
-        case .largeTitle:
-            self = .largeTitle
-        case .title1:
-            self = .title
-        case .title2:
-            if #available(iOS 14.0, *) {
-                self = .title2
-            } else {
-                self = .title
-            }
-        case .title3:
-            if #available(iOS 14.0, *) {
-                self = .title3
-            } else {
-                self = .title
-            }
-        case .headline:
-            self = .headline
-        case .subheadline:
-            self = .subheadline
-        case .callout:
-            self = .callout
-        case .caption1:
-            self = .caption
-        case .caption2:
-            if #available(iOS 14.0, *) {
-                self = .caption2
-            } else {
-                self = .caption
-            }
-        case .footnote:
-            self = .footnote
-        case .body:
-            self = .body
-
-        default:
-            self = .body
+    var requiresRegistration: Bool {
+        switch self {
+        case .montserratRegular, .montserratSemiBold, .montserratExtraBold: return true
+        case .lexendThin, .lexendExtraLight, .lexendMedium, .lexendBold: return true
         }
     }
 }
-
-// MARK: - Tuxedo Fonts
-extension Font {
-
-    /**
-     * Returns a Font provided by the Tuxedo font library.
-     *
-     * NOTE: Due to naming collisions between our Tuxedo font styles and that of SwiftUI.Font (Font.caption for ex.),
-     * we explicitly access our custom fonts through this method instead of defining them as we do in other places via
-     * the use of static vars. Providing static var overrides currently causes errors when rendering Previews that use
-     * the overrides.
-     */
-    static func tuxedo(_ fontStyle: RouraFontStyle) -> Font {
-        if !didRegisterCutomFonts {
-            registerCustomFonts()
-        }
-        
-        return Font(UIFont.font(style: fontStyle))
-    }
-}
-
-
-extension Font {
-
-    /// Returns a font for the given components that will properly scale for it's font text style
-    /// - Parameter components: The `FontComponents` to build a font from
-    /// - Returns: A scalable font from the given components
-    private static func font(for components: FontComponents) -> Font {
-        if !didRegisterCutomFonts {
-            registerCustomFonts()
-        }
-
-        if #available(iOS 14.0, *) {
-            return Font.custom(components.fontName.rawValue,
-                               size: components.pointSize,
-                               relativeTo: Font.TextStyle(with: components.textStyle))
-        } else {
-            return Font.custom(components.fontName.rawValue, size: components.pointSize)
-        }
-    }
-
-    /// It should be relatively rare that you use this method - in general, you should use `font(for:)` instead.
-    /// This method will return a font that does _not_ scale with dynamic type sizes
-    /// - Parameter components: The `FontComponents` to build a font from
-    /// - Returns: A fixed-sized font from the given components
-    private static func fixedSizedFont(for components: FontComponents) -> Font {
-        if !didRegisterCutomFonts {
-            registerCustomFonts()
-        }
-
-        if #available(iOS 14.0, *) {
-            return Font.custom(components.fontName.rawValue, fixedSize: components.pointSize)
-        } else {
-            return Font.custom(components.fontName.rawValue, size: components.pointSize)
-        }
-    }
-}
-
-// MARK: - Helper Methods
 
 private extension Font {
     static var didRegisterCutomFonts: Bool = false
@@ -230,12 +92,14 @@ private extension Font {
     /// This method must be called before you can use any non-system / custom font returned by any of the public `font()` methods.  Specifically, this means
     /// if you are using `monterrat`, you must call this method first (`avenir` is supplied by the OS).
     static func registerCustomFonts() {
-        let fontsRequiringRegistration = RouraFontName.allCases.filter { $0.requiresRegistration }
+        let fontsRequiringRegistration = TuxedoFontName.allCases.filter { $0.requiresRegistration }
+
         for font in fontsRequiringRegistration {
             guard let url = Bundle.main.url(forResource: font.rawValue, withExtension: "ttf") else {
                 Log.nonfatal(.unavailableFont(name: font.rawValue))
                 continue
             }
+
             CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
         }
 
@@ -243,17 +107,136 @@ private extension Font {
     }
 }
 
-public extension Font {
-    static let tuxedoTiny: Font = font(for: RouraFontStyle.tiny.components(for: .montserrat))
-    static let tuxedoCaption: Font = font(for: RouraFontStyle.caption.components(for: .montserrat))
-    static let tuxedoCaptionBold: Font = font(for: RouraFontStyle.captionBold.components(for: .montserrat))
-    static let tuxedoCaptionExtraBold: Font = font(for: RouraFontStyle.captionExtraBold.components(for: .montserrat))
-    static let tuxedoBody: Font = font(for: RouraFontStyle.body.components(for: .montserrat))
-    static let tuxedoBodyBold: Font = font(for: RouraFontStyle.bodyBold.components(for: .montserrat))
-    static let tuxedoH2: Font = font(for: RouraFontStyle.h2.components(for: .montserrat))
-    static let tuxedoH3: Font = font(for: RouraFontStyle.h3.components(for: .montserrat))
-    static let tuxedoH4: Font = font(for: RouraFontStyle.h4.components(for: .montserrat))
-    static let tuxedoH5: Font = font(for: RouraFontStyle.h5.components(for: .montserrat))
-    static let tuxedoH5Light: Font = font(for: RouraFontStyle.h5Light.components(for: .montserrat))
-    static let tuxedoH5Bold: Font = font(for: RouraFontStyle.h5Bold.components(for: .montserrat))
+public enum TuxedoFontStyle: CaseIterable {
+    case h2
+    case h3
+    case h4
+    case h5
+    case h5Light
+    case h5Bold
+    case body
+    case bodyBold
+    case bodyExtraBold
+    case caption
+    case captionBold
+    case captionExtraBold
+    case tiny
+
+
+    // MARK: - Descriptors
+
+    public var name: String { String(describing: self) }
+
+    public func description(for family: TuxedoFontFamily) -> String { "\(fontName(for: family).rawValue) (\(pointSize)pt)" }
+
+    // MARK: - Private Methods
+
+    /// Maps the given `RouraFontStyle` to a `RouraFontName` for a given font family
+    /// - Parameter family: The font family that will be used for the give `RouraFontStyle`
+    /// - Returns: A `RouraFontName` for the given font style and font family
+    func fontName(for family: TuxedoFontFamily) -> TuxedoFontName {
+        switch self {
+        case .h2:
+            switch family {
+            case .lexend: return .lexendBold
+            case .montserrat: return .montserratExtraBold
+            }
+        case .h3:
+            switch family {
+            case .lexend: return .lexendBold
+            case .montserrat: return .montserratExtraBold
+            }
+        case .h4:
+            switch family {
+            case .lexend: return .lexendBold
+            case .montserrat: return .montserratExtraBold
+            }
+        case .h5:
+            switch family {
+            case .lexend: return .lexendMedium
+            case .montserrat: return .montserratSemiBold
+            }
+        case .h5Light:
+            switch family {
+            case .lexend: return .lexendExtraLight
+            case .montserrat: return .montserratRegular
+            }
+        case .h5Bold:
+            switch family {
+            case .lexend: return .lexendBold
+            case .montserrat: return .montserratExtraBold
+            }
+        case .body:
+            switch family {
+            case .lexend: return .lexendThin
+            case .montserrat: return .montserratRegular
+            }
+        case .bodyBold:
+            switch family {
+            case .lexend: return .lexendMedium
+            case .montserrat: return .montserratSemiBold
+            }
+        case .bodyExtraBold:
+            switch family {
+            case .lexend: return .lexendBold
+            case .montserrat: return .montserratExtraBold
+            }
+        case .caption:
+            switch family {
+            case .lexend: return .lexendThin
+            case .montserrat: return .montserratRegular
+            }
+        case .captionBold:
+            switch family {
+            case .lexend: return .lexendMedium
+            case .montserrat: return .montserratSemiBold
+            }
+        case .captionExtraBold:
+            switch family {
+            case .lexend: return .lexendBold
+            case .montserrat: return .montserratExtraBold
+            }
+        case .tiny:
+            switch family {
+            case .lexend: return .lexendMedium
+            case .montserrat: return .montserratSemiBold
+            }
+        }
+    }
+
+    var pointSize: CGFloat {
+        switch self {
+        case .h2: return 36.0
+        case .h3: return 26.0
+        case .h4: return 20.0
+        case .h5: return 16.0
+        case .h5Light: return 16.0
+        case .h5Bold: return 16.0
+        case .body: return 14.0
+        case .bodyBold: return 14.0
+        case .bodyExtraBold: return 14.0
+        case .caption: return 12.0
+        case .captionBold: return 12.0
+        case .captionExtraBold: return 12.0
+        case .tiny: return 10.0
+        }
+    }
+
+    var textStyle: Font.TextStyle {
+        switch self {
+        case .h2: return .title2
+        case .h3: return .title3
+        case .h4: return .headline
+        case .h5: return .subheadline
+        case .h5Light: return .subheadline
+        case .h5Bold: return .subheadline
+        case .body: return .body
+        case .bodyBold: return .body
+        case .bodyExtraBold: return .body
+        case .caption: return .caption
+        case .captionBold: return .caption
+        case .captionExtraBold: return .caption
+        case .tiny: return .caption2
+        }
+    }
 }
