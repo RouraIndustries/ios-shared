@@ -56,7 +56,24 @@ public extension View {
      - Returns: A view with the specified Roura font and style option applied.
      */
     func rouraFont(_ fontStyle: RouraFontStyle, fontFamily: RouraFontFamily = .montserrat, useScaledFont: Bool = true, option: FontOption? = nil) -> some View {
-        let baseFont = Font.font(with: fontStyle.components(for: fontFamily), useScaledFont: useScaledFont)
+
+        let baseFont: Font
+
+        switch fontStyle {
+        case .h2: baseFont = Font.tuxedoH2
+        case .h3: baseFont = Font.tuxedoH3
+        case .h4: baseFont = Font.tuxedoH4
+        case .h5: baseFont = Font.tuxedoH5
+        case .h5Light: baseFont = Font.tuxedoH5Light
+        case .h5Bold: baseFont = Font.tuxedoH5Bold
+        case .body: baseFont = Font.tuxedoBody
+        case .bodyBold: baseFont = Font.tuxedoBodyBold
+        case .caption: baseFont = Font.tuxedoCaption
+        case .captionBold: baseFont = Font.tuxedoCaptionBold
+        case .captionExtraBold: baseFont = Font.tuxedoCaptionExtraBold
+        case .tiny: baseFont = Font.tuxedoTiny
+        }
+
         let appliedFont = option?.apply(to: baseFont) ?? baseFont
         return font(appliedFont)
     }
@@ -77,86 +94,133 @@ public extension Text {
      */
     func rouraFont(_ fontStyle: RouraFontStyle, fontFamily: RouraFontFamily = .montserrat, useScaledFont: Bool = true, option: FontOption? = nil) -> Text {
 
-        let baseFont = Font.font(with: fontStyle.components(for: fontFamily), useScaledFont: useScaledFont)
+        let baseFont: Font
+
+        switch fontStyle {
+        case .h2: baseFont = Font.tuxedoH2
+        case .h3: baseFont = Font.tuxedoH3
+        case .h4: baseFont = Font.tuxedoH4
+        case .h5: baseFont = Font.tuxedoH5
+        case .h5Light: baseFont = Font.tuxedoH5Light
+        case .h5Bold: baseFont = Font.tuxedoH5Bold
+        case .body: baseFont = Font.tuxedoBody
+        case .bodyBold: baseFont = Font.tuxedoBodyBold
+        case .caption: baseFont = Font.tuxedoCaption
+        case .captionBold: baseFont = Font.tuxedoCaptionBold
+        case .captionExtraBold: baseFont = Font.tuxedoCaptionExtraBold
+        case .tiny: baseFont = Font.tuxedoTiny
+        }
+
         let appliedFont = option?.apply(to: baseFont) ?? baseFont
         return font(appliedFont)
     }
 }
 
-public extension Font {
+import SwiftUI
 
-    /// This is the  method you will use to get any standard font defined by a `RouraFontStyle`.  Use this method for all "standard" font styles.  If the calling
-    /// app contains a one-off custom font style, you can manually create the `FontComponents` and use the other `font(with:useScaledFont:)`
-    /// method.
-    /// - Parameters:
-    ///   - style: The `RouraFontStyle` for the font you wish to retrieve.  The style inherently specifies the font weight, standard size and scaling style.
-    ///   - fontFamily: The `RouraFontFamily` you are using.  This defaults to `montserrat` if not explicitly specified.
-    ///   - useScaledFont: Whether or not you want to support Dynamic Type.  By default, this is `true` which means the returned font will scale based
-    ///   on the user's Dynamic Type font settings.
-    /// - Returns: A font reflecting the given parameters
-    static func font(style: RouraFontStyle,
-                     fontFamily: RouraFontFamily = .montserrat,
-                     useScaledFont: Bool = true) -> Font {
+extension Font.TextStyle {
 
-        if !didRegisterCutomFonts {
-            registerCustomFonts()
-        }
-
-        let components = style.components(for: fontFamily)
-        return font(with: components, useScaledFont: useScaledFont)
-    }
-
-    /// Use this method if you have a one-off font style defined in the calling app.  This method allows you to create your own `FontComponents` structure to
-    /// define the properties you want in the returned font.  For all standard Roura font styles, use `font(style:fontFmaily:useScaledFont:)` instead.
-    /// - Parameters:
-    ///   - components: The `FontComponents` that define the font you want returned
-    ///   - useScaledFont: Whether or not you want to support Dynamic Type.  By default, this is `true` which means the returned font will scale based
-    ///   on the user's Dynamic Type font settings.
-    /// - Returns: A font reflecting the given parameters
-    static func font(with components: FontComponents, useScaledFont: Bool) -> Font {
-        let fontName = components.fontName.rawValue
-        return Font.custom(fontName, size: components.pointSize, relativeTo: components.swiftUITextStyle)
-    }
-}
-
-// MARK: - Helper Methods
-
-private extension Font {
-    static var didRegisterCutomFonts: Bool = false
-
-    /// This method must be called before you can use any non-system / custom font returned by any of the public `font()` methods.  Specifically, this means
-    /// if you are using `monterrat`, you must call this method first (`avenir` is supplied by the OS).
-    static func registerCustomFonts() {
-        let fontsRequiringRegistration = RouraFontName.allCases.filter { $0.requiresRegistration }
-        for font in fontsRequiringRegistration {
-            guard let url = Bundle.main.url(forResource: font.rawValue, withExtension: "ttf") else {
-                Log.nonfatal(.unavailableFont(name: font.rawValue))
-                continue
+    /// Create a Font.TextStyle that maps to the closest correpsonding UIFont.TextStyle
+    /// - Parameter style: The UIFont.TextStyle that you need a corresponding Font.TextStyle for.
+    init(with style: UIFont.TextStyle) {
+        switch style {
+        case .largeTitle:
+            self = .largeTitle
+        case .title1:
+            self = .title
+        case .title2:
+            if #available(iOS 14.0, *) {
+                self = .title2
+            } else {
+                self = .title
             }
-            CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
-        }
+        case .title3:
+            if #available(iOS 14.0, *) {
+                self = .title3
+            } else {
+                self = .title
+            }
+        case .headline:
+            self = .headline
+        case .subheadline:
+            self = .subheadline
+        case .callout:
+            self = .callout
+        case .caption1:
+            self = .caption
+        case .caption2:
+            if #available(iOS 14.0, *) {
+                self = .caption2
+            } else {
+                self = .caption
+            }
+        case .footnote:
+            self = .footnote
+        case .body:
+            self = .body
 
-        didRegisterCutomFonts = true
+        default:
+            self = .body
+        }
     }
 }
 
-/// `RouraFontStyle` extension to define Font.TextStyle for SwiftUI
-public extension RouraFontStyle {
-    /// Maps the given `RouraFontStyle` to `Font.TextStyle` (which is primarily used to describe how the font will scale with dynamic type)
-    private var swiftUITextStyle: Font.TextStyle {
-        switch self {
-        case .h2: return .title2
-        case .h3: return .title3
-        case .h4: return .headline
-        case .h5: return .subheadline
-        case .h5Light: return .subheadline
-        case .h5Bold: return .subheadline
-        case .body: return .body
-        case .bodyBold: return .body
-        case .caption: return .caption
-        case .captionBold: return .caption
-        case .captionExtraBold: return .caption
-        case .tiny: return .caption2
+// MARK: - Tuxedo Fonts
+extension Font {
+
+    /**
+     * Returns a Font provided by the Tuxedo font library.
+     *
+     * NOTE: Due to naming collisions between our Tuxedo font styles and that of SwiftUI.Font (Font.caption for ex.),
+     * we explicitly access our custom fonts through this method instead of defining them as we do in other places via
+     * the use of static vars. Providing static var overrides currently causes errors when rendering Previews that use
+     * the overrides.
+     */
+    static func tuxedo(_ fontStyle: RouraFontStyle) -> Font {
+        return Font(UIFont.font(style: fontStyle))
+    }
+}
+
+
+extension Font {
+
+    /// Returns a font for the given components that will properly scale for it's font text style
+    /// - Parameter components: The `FontComponents` to build a font from
+    /// - Returns: A scalable font from the given components
+    private static func font(for components: FontComponents) -> Font {
+        if #available(iOS 14.0, *) {
+            return Font.custom(components.fontName.rawValue,
+                               size: components.pointSize,
+                               relativeTo: Font.TextStyle(with: components.textStyle))
+        } else {
+            return Font.custom(components.fontName.rawValue, size: components.pointSize)
         }
     }
+
+    /// It should be relatively rare that you use this method - in general, you should use `font(for:)` instead.
+    /// This method will return a font that does _not_ scale with dynamic type sizes
+    /// - Parameter components: The `FontComponents` to build a font from
+    /// - Returns: A fixed-sized font from the given components
+    private static func fixedSizedFont(for components: FontComponents) -> Font {
+        if #available(iOS 14.0, *) {
+            return Font.custom(components.fontName.rawValue, fixedSize: components.pointSize)
+        } else {
+            return Font.custom(components.fontName.rawValue, size: components.pointSize)
+        }
+    }
+}
+
+extension Font {
+    static let tuxedoTiny: Font = font(for: RouraFontStyle.tiny.components(for: .montserrat))
+    static let tuxedoCaption: Font = font(for: RouraFontStyle.caption.components(for: .montserrat))
+    static let tuxedoCaptionBold: Font = font(for: RouraFontStyle.captionBold.components(for: .montserrat))
+    static let tuxedoCaptionExtraBold: Font = font(for: RouraFontStyle.captionExtraBold.components(for: .montserrat))
+    static let tuxedoBody: Font = font(for: RouraFontStyle.body.components(for: .montserrat))
+    static let tuxedoBodyBold: Font = font(for: RouraFontStyle.bodyBold.components(for: .montserrat))
+    static let tuxedoH2: Font = font(for: RouraFontStyle.h2.components(for: .montserrat))
+    static let tuxedoH3: Font = font(for: RouraFontStyle.h3.components(for: .montserrat))
+    static let tuxedoH4: Font = font(for: RouraFontStyle.h4.components(for: .montserrat))
+    static let tuxedoH5: Font = font(for: RouraFontStyle.h5.components(for: .montserrat))
+    static let tuxedoH5Light: Font = font(for: RouraFontStyle.h5Light.components(for: .montserrat))
+    static let tuxedoH5Bold: Font = font(for: RouraFontStyle.h5Bold.components(for: .montserrat))
 }
