@@ -5,6 +5,7 @@
 //  Created by Christopher J. Roura on 6/7/24.
 //
 
+import RouraFoundation
 import SwiftUI
 
 public enum FontOption {
@@ -35,10 +36,10 @@ public extension Font {
 
         if let option {
             if useScaledFonts {
-                var font = Font.custom(style.fontName(for: fontFamily).rawValue, size: style.pointSize, relativeTo: style.textStyle)
+                let font = Font.custom(style.fontName(for: fontFamily).rawValue, size: style.pointSize, relativeTo: style.textStyle)
                 return set(font: font, with: option)
             } else {
-                var font = Font.custom(style.fontName(for: fontFamily).rawValue, fixedSize: style.pointSize)
+                let font = Font.custom(style.fontName(for: fontFamily).rawValue, fixedSize: style.pointSize)
                 return set(font: font, with: option)
             }
         } else {

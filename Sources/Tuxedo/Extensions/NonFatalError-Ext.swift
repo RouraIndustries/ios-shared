@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RouraFoundation
 
 extension NonFatalError {
     static func unavailableFont(name: String) -> NonFatalError {

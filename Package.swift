@@ -10,30 +10,91 @@ let package = Package(
         .macOS(.v14)
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "RouraTools",
-            targets: ["RouraTools"]
+            name: "RouraFoundation",
+            targets: [
+                "RouraFoundation"
+            ]
         ),
+        .library(
+            name: "Tuxedo",
+            targets: [
+                "Tuxedo"
+            ]
+        ),
+        .library(
+            name: "RouraUIKit",
+            targets: [
+                "RouraUIKit"
+            ]
+        ),
+        .library(
+            name: "RouraSwiftUI",
+            targets: [
+                "RouraSwiftUI"
+            ]
+        )
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "RouraTools",
+            name: "RouraFoundation"
+        ),
+        .testTarget(
+            name: "RouraFoundationTests",
+            dependencies: [
+                "RouraFoundation"
+            ]
+        ),
+        .target(
+            name: "Tuxedo",
+            dependencies: [
+                "RouraFoundation"
+            ],
             resources: [
-                .process("Assets/Fonts/Lexend-Bold.ttf"),
-                .process("Assets/Fonts/Lexend-ExtraLight.ttf"),
-                .process("Assets/Fonts/Lexend-Medium.ttf"),
-                .process("Assets/Fonts/Lexend-Thin.ttf"),
-                .process("Assets/Fonts/Montserrat-ExtraBold.ttf"),
-                .process("Assets/Fonts/Montserrat-SemiBold.ttf"),
-                .process("Assets/Fonts/Montserrat-Regular.ttf")
+                .process("Assets/Fonts/Lexend/Lexend-Bold.ttf"),
+                .process("Assets/Fonts/Lexend/Lexend-ExtraLight.ttf"),
+                .process("Assets/Fonts/Lexend/Lexend-Medium.ttf"),
+                .process("Assets/Fonts/Lexend/Lexend-Thin.ttf"),
+
+                .process("Assets/Fonts/Montserrat/Montserrat-ExtraBold.ttf"),
+                .process("Assets/Fonts/Montserrat/Montserrat-SemiBold.ttf"),
+                .process("Assets/Fonts/Montserrat/Montserrat-Regular.ttf")
             ]
         ),
         .testTarget(
-            name: "RouraToolsTests",
-            dependencies: ["RouraTools"]
+            name: "TuxedoTests",
+            dependencies: [
+                "Tuxedo"
+            ]
         ),
+        .target(
+            name: "RouraUIKit",
+            dependencies: [
+                "RouraFoundation",
+                "Tuxedo"
+            ]
+        ),
+        .testTarget(
+            name: "RouraUIKitTests",
+            dependencies: [
+                "RouraUIKit"
+            ],
+            resources: [
+                .copy("Resources/app-icon.png")
+            ]
+        ),
+        .target(
+            name: "RouraSwiftUI",
+            dependencies: [
+                "RouraFoundation",
+                "Tuxedo"
+            ]
+        ),
+        .testTarget(
+            name: "RouraSwiftUITests",
+            dependencies: [
+                "RouraSwiftUI"
+            ]
+        )
     ]
 )

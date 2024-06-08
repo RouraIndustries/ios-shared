@@ -5,7 +5,8 @@
 //  Created by Christopher J. Roura on 6/7/24.
 //
 
-import UIKit
+import Foundation
+import RouraFoundation
 
 public struct UIColorAlphaComponent: ExpressibleByFloatLiteral, Equatable {
 
