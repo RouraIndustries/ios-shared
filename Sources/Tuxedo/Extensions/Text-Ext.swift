@@ -14,6 +14,6 @@ public extension Text {
         useScaledFont: Bool = true,
         option: FontStylingOption? = nil
     ) -> Text {
-        self.font(Font.font(with: style.components(for: fontFamily), useScaledFont: useScaledFont, option: option))
+        self.font(Font.font(style: style, fontFamily: fontFamily, useScaledFont: useScaledFont, option: option))
     }
 }

@@ -41,19 +41,21 @@ public extension View {
 }
 
 public extension View {
-    /// <#Description#>
+
+    /// Applies a font style to the view.
+    ///
     /// - Parameters:
-    ///   - style: <#style description#>
-    ///   - fontFamily: <#fontFamily description#>
-    ///   - useScaledFont: <#useScaledFont description#>
-    ///   - option: <#option description#>
-    /// - Returns: <#description#>
+    ///   - style: The font style to apply.
+    ///   - fontFamily: The font family to use. Defaults to Montserrat.
+    ///   - useScaledFont: Whether or not to support Dynamic Type. Defaults to `true`.
+    ///   - option: The font styling option to apply. Defaults to `nil`.
+    /// - Returns: A view with the specified font style applied.
     func tuxedoFont(
         _ style: RouraFontStyle,
         fontFamily: RouraFontFamily = .montserrat,
         useScaledFont: Bool = true,
         option: FontStylingOption? = nil
     ) -> some View {
-        self.font(Font.font(with: style.components(for: fontFamily), useScaledFont: useScaledFont, option: option))
+        self.font(Font.font(style: style, fontFamily: fontFamily, useScaledFont: useScaledFont, option: option))
     }
 }

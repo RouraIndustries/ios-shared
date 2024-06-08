@@ -111,63 +111,63 @@ public enum RouraFontStyle: CaseIterable {
         switch self {
         case .h2:
             switch family {
-            case .lexend: return .lexendBold
-            case .montserrat: return .montserratExtraBold
+            case .lexend:       return .lexendBold
+            case .montserrat:   return .montserratExtraBold
             }
         case .h3:
             switch family {
-            case .lexend: return .lexendBold
-            case .montserrat: return .montserratExtraBold
+            case .lexend:       return .lexendBold
+            case .montserrat:   return .montserratExtraBold
             }
         case .h4:
             switch family {
-            case .lexend: return .lexendBold
-            case .montserrat: return .montserratExtraBold
+            case .lexend:       return .lexendBold
+            case .montserrat:   return .montserratExtraBold
             }
         case .h5:
             switch family {
-            case .lexend: return .lexendMedium
-            case .montserrat: return .montserratSemiBold
+            case .lexend:       return .lexendMedium
+            case .montserrat:   return .montserratSemiBold
             }
         case .h5Light:
             switch family {
-            case .lexend: return .lexendExtraLight
-            case .montserrat: return .montserratRegular
+            case .lexend:       return .lexendExtraLight
+            case .montserrat:   return .montserratRegular
             }
         case .h5Bold:
             switch family {
-            case .lexend: return .lexendBold
-            case .montserrat: return .montserratExtraBold
+            case .lexend:       return .lexendBold
+            case .montserrat:   return .montserratExtraBold
             }
         case .body:
             switch family {
-            case .lexend: return .lexendThin
-            case .montserrat: return .montserratRegular
+            case .lexend:       return .lexendThin
+            case .montserrat:   return .montserratRegular
             }
         case .bodyBold:
             switch family {
-            case .lexend: return .lexendMedium
-            case .montserrat: return .montserratSemiBold
+            case .lexend:       return .lexendMedium
+            case .montserrat:   return .montserratSemiBold
             }
         case .caption:
             switch family {
-            case .lexend: return .lexendThin
-            case .montserrat: return .montserratRegular
+            case .lexend:       return .lexendThin
+            case .montserrat:   return .montserratRegular
             }
         case .captionBold:
             switch family {
-            case .lexend: return .lexendMedium
-            case .montserrat: return .montserratSemiBold
+            case .lexend:       return .lexendMedium
+            case .montserrat:   return .montserratSemiBold
             }
         case .captionExtraBold:
             switch family {
-            case .lexend: return .lexendBold
-            case .montserrat: return .montserratExtraBold
+            case .lexend:       return .lexendBold
+            case .montserrat:   return .montserratExtraBold
             }
         case .tiny:
             switch family {
-            case .lexend: return .lexendMedium
-            case .montserrat: return .montserratSemiBold
+            case .lexend:       return .lexendMedium
+            case .montserrat:   return .montserratSemiBold
             }
         }
     }
@@ -175,36 +175,36 @@ public enum RouraFontStyle: CaseIterable {
     /// Maps the given `RouraFontStyle` to the appropriate font size
     private var pointSize: CGFloat {
         switch self {
-        case .h2: return 36.0
-        case .h3: return 26.0
-        case .h4: return 20.0
-        case .h5: return 16.0
-        case .h5Light: return 16.0
-        case .h5Bold: return 16.0
-        case .body: return 14.0
-        case .bodyBold: return 14.0
-        case .caption: return 12.0
-        case .captionBold: return 12.0
+        case .h2:               return 36.0
+        case .h3:               return 26.0
+        case .h4:               return 20.0
+        case .h5:               return 16.0
+        case .h5Light:          return 16.0
+        case .h5Bold:           return 16.0
+        case .body:             return 14.0
+        case .bodyBold:         return 14.0
+        case .caption:          return 12.0
+        case .captionBold:      return 12.0
         case .captionExtraBold: return 12.0
-        case .tiny: return 10.0
+        case .tiny:             return 10.0
         }
     }
 
     /// Maps the given `RouraFontStyle` to `UIFont.TextStyle` (which is primarily used to describe how the font will scale with dynamic type)
     private var textStyle: UIFont.TextStyle {
         switch self {
-        case .h2: return .title2
-        case .h3: return .title3
-        case .h4: return .headline
-        case .h5: return .subheadline
-        case .h5Light: return .subheadline
-        case .h5Bold: return .subheadline
-        case .body: return .body
-        case .bodyBold: return .body
-        case .caption: return .caption1
-        case .captionBold: return .caption1
+        case .h2:               return .title2
+        case .h3:               return .title3
+        case .h4:               return .headline
+        case .h5:               return .subheadline
+        case .h5Light:          return .subheadline
+        case .h5Bold:           return .subheadline
+        case .body:             return .body
+        case .bodyBold:         return .body
+        case .caption:          return .caption1
+        case .captionBold:      return .caption1
         case .captionExtraBold: return .caption1
-        case .tiny: return .caption2
+        case .tiny:             return .caption2
         }
     }
 

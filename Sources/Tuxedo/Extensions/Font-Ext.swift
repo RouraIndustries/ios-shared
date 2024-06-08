@@ -27,7 +27,7 @@ public extension Font {
     ) -> Font {
 
         let components = style.components(for: fontFamily)
-        return font(with: components, useScaledFont: useScaledFont)
+        return font(with: components, useScaledFont: useScaledFont, option: option)
     }
 
     /// Use this method if you have a one-off font style defined in the calling app.  This method allows you to create your own `FontComponents` structure to
@@ -50,10 +50,11 @@ public extension Font {
         let fontName = components.fontName.rawValue
         let fontSize = components.pointSize
 
-        let scaledFont = Font.custom(fontName, size: fontSize, relativeTo: components.swiftUITextStyle)
-        let unscaledFont = Font.custom(fontName, fixedSize: fontSize)
+        let baseFont = useScaledFont ?
+        Font.custom(fontName, size: fontSize, relativeTo: components.swiftUITextStyle) :
+        Font.custom(fontName, fixedSize: fontSize)
 
-        return useScaledFont ? scaledFont : unscaledFont
+        return option?.apply(to: baseFont) ?? baseFont
     }
 }
 
@@ -83,18 +84,18 @@ private extension Font {
 extension RouraFontStyle {
     var swiftUItextStyle: Font.TextStyle {
         switch self {
-        case .h2: return .title2
-        case .h3: return .title3
-        case .h4: return .headline
-        case .h5: return .subheadline
-        case .h5Light: return .subheadline
-        case .h5Bold: return .subheadline
-        case .body: return .body
-        case .bodyBold: return .body
-        case .caption: return .caption
-        case .captionBold: return .caption
+        case .h2:               return .title2
+        case .h3:               return .title3
+        case .h4:               return .headline
+        case .h5:               return .subheadline
+        case .h5Light:          return .subheadline
+        case .h5Bold:           return .subheadline
+        case .body:             return .body
+        case .bodyBold:         return .body
+        case .caption:          return .caption
+        case .captionBold:      return .caption
         case .captionExtraBold: return .caption
-        case .tiny: return .caption2
+        case .tiny:             return .caption2
         }
     }
 }
