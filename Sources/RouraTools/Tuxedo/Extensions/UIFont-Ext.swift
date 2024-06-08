@@ -5,7 +5,7 @@
 //  Created by Christopher J. Roura on 6/7/24.
 //
 
-import UIKit
+import SwiftUI
 
 public extension UIFont {
 
@@ -111,11 +111,13 @@ public struct FontComponents {
     public let fontName: RouraFontName
     public let pointSize: CGFloat
     public let textStyle: UIFont.TextStyle
+    public let swiftUITextStyle: Font.TextStyle
 
-    public init(fontName: RouraFontName, pointSize: CGFloat, textStyle: UIFont.TextStyle) {
+    public init(fontName: RouraFontName, pointSize: CGFloat, textStyle: UIFont.TextStyle? = nil, swiftUITextStyle: Font.TextStyle? = nil) {
         self.fontName = fontName
         self.pointSize = pointSize
-        self.textStyle = textStyle
+        self.textStyle = textStyle ?? .body
+        self.swiftUITextStyle = swiftUITextStyle ?? .body
     }
 }
 
