@@ -22,14 +22,6 @@ public enum Shadow {
     /// x: 0, y: 8, blur: 32
     case extraHigh
 
-    /// Neumorphic shadow effect for the top portion of the component.
-    /// x: -4, y: -4, blur: 8, color: Shadow.opacity(0.35)
-    case neumorphicTop(isPressed: Bool)
-
-    /// Neumorphic shadow effect for the bottom portion of the component.
-    /// x: 8, y: 8, blur: 16, color: .backgroundPrimary
-    case neumorphicBottom(isPressed: Bool)
-
     /// The lower level building blocks of our `Shadow` configuration.
     internal var components: Components {
         switch self {
@@ -37,21 +29,6 @@ public enum Shadow {
         case .medium:           return Components(xOffset: 0.0, yOffset: 2.0, blur: 8.0, color: .shadow)
         case .high:             return Components(xOffset: 0.0, yOffset: 4.0, blur: 16.0, color: .shadow)
         case .extraHigh:        return Components(xOffset: 0.0, yOffset: 8.0, blur: 32.0, color: .shadow)
-        case .neumorphicTop(let isPressed):
-            return Components(
-                xOffset: isPressed ? -4.0 : 8.0,
-                yOffset: isPressed ? -4.0 : 8.0,
-                blur: isPressed ? 8.0 : 16.0,
-                color: isPressed ? UIColor.shadow35 : .shadow75
-            )
-
-        case .neumorphicBottom(let isPressed): 
-            return Components(
-                xOffset: isPressed ? 8.0 : -4.0,
-                yOffset: isPressed ? 8.0 : -4.0,
-                blur: isPressed ? 8.0 : 16.0,
-                color: .backgroundPrimary
-            )
         }
     }
 }
