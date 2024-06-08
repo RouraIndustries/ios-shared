@@ -27,7 +27,7 @@ public extension Font {
     ) -> Font {
 
         let components = style.components(for: fontFamily)
-        return font(with: components, useScaledFont: useScaledFont)
+        return font(with: components, useScaledFont: useScaledFont, option: option)
     }
 
     /// Use this method if you have a one-off font style defined in the calling app.  This method allows you to create your own `FontComponents` structure to
@@ -50,10 +50,11 @@ public extension Font {
         let fontName = components.fontName.rawValue
         let fontSize = components.pointSize
 
-        let scaledFont = Font.custom(fontName, size: fontSize, relativeTo: components.swiftUITextStyle)
-        let unscaledFont = Font.custom(fontName, fixedSize: fontSize)
+        let baseFont = useScaledFont ?
+        Font.custom(fontName, size: fontSize, relativeTo: components.swiftUITextStyle) :
+        Font.custom(fontName, fixedSize: fontSize)
 
-        return useScaledFont ? scaledFont : unscaledFont
+        return option?.apply(to: baseFont) ?? baseFont
     }
 }
 
