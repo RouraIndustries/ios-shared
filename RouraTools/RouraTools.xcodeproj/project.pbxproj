@@ -1,0 +1,622 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03B7F89F2C13FE20004BC098 /* RouraToolsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B7F89E2C13FE20004BC098 /* RouraToolsApp.swift */; };
+		03B7F8A12C13FE20004BC098 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B7F8A02C13FE20004BC098 /* ContentView.swift */; };
+		03B7F8A32C13FE21004BC098 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03B7F8A22C13FE21004BC098 /* Assets.xcassets */; };
+		03B7F8A72C13FE21004BC098 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03B7F8A62C13FE21004BC098 /* Preview Assets.xcassets */; };
+		03B7F8B12C13FE21004BC098 /* RouraToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B7F8B02C13FE21004BC098 /* RouraToolsTests.swift */; };
+		03B7F8BB2C13FE22004BC098 /* RouraToolsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B7F8BA2C13FE22004BC098 /* RouraToolsUITests.swift */; };
+		03B7F8BD2C13FE22004BC098 /* RouraToolsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B7F8BC2C13FE22004BC098 /* RouraToolsUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		03B7F8AD2C13FE21004BC098 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03B7F8932C13FE20004BC098 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03B7F89A2C13FE20004BC098;
+			remoteInfo = RouraTools;
+		};
+		03B7F8B72C13FE22004BC098 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03B7F8932C13FE20004BC098 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03B7F89A2C13FE20004BC098;
+			remoteInfo = RouraTools;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03B7F89B2C13FE20004BC098 /* RouraTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouraTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03B7F89E2C13FE20004BC098 /* RouraToolsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouraToolsApp.swift; sourceTree = "<group>"; };
+		03B7F8A02C13FE20004BC098 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		03B7F8A22C13FE21004BC098 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03B7F8A42C13FE21004BC098 /* RouraTools.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RouraTools.entitlements; sourceTree = "<group>"; };
+		03B7F8A62C13FE21004BC098 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		03B7F8AC2C13FE21004BC098 /* RouraToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouraToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03B7F8B02C13FE21004BC098 /* RouraToolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouraToolsTests.swift; sourceTree = "<group>"; };
+		03B7F8B62C13FE22004BC098 /* RouraToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouraToolsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03B7F8BA2C13FE22004BC098 /* RouraToolsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouraToolsUITests.swift; sourceTree = "<group>"; };
+		03B7F8BC2C13FE22004BC098 /* RouraToolsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouraToolsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03B7F8982C13FE20004BC098 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03B7F8A92C13FE21004BC098 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03B7F8B32C13FE22004BC098 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03B7F8922C13FE20004BC098 = {
+			isa = PBXGroup;
+			children = (
+				03B7F89D2C13FE20004BC098 /* RouraTools */,
+				03B7F8AF2C13FE21004BC098 /* RouraToolsTests */,
+				03B7F8B92C13FE22004BC098 /* RouraToolsUITests */,
+				03B7F89C2C13FE20004BC098 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		03B7F89C2C13FE20004BC098 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03B7F89B2C13FE20004BC098 /* RouraTools.app */,
+				03B7F8AC2C13FE21004BC098 /* RouraToolsTests.xctest */,
+				03B7F8B62C13FE22004BC098 /* RouraToolsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03B7F89D2C13FE20004BC098 /* RouraTools */ = {
+			isa = PBXGroup;
+			children = (
+				03B7F89E2C13FE20004BC098 /* RouraToolsApp.swift */,
+				03B7F8A02C13FE20004BC098 /* ContentView.swift */,
+				03B7F8A22C13FE21004BC098 /* Assets.xcassets */,
+				03B7F8A42C13FE21004BC098 /* RouraTools.entitlements */,
+				03B7F8A52C13FE21004BC098 /* Preview Content */,
+			);
+			path = RouraTools;
+			sourceTree = "<group>";
+		};
+		03B7F8A52C13FE21004BC098 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				03B7F8A62C13FE21004BC098 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		03B7F8AF2C13FE21004BC098 /* RouraToolsTests */ = {
+			isa = PBXGroup;
+			children = (
+				03B7F8B02C13FE21004BC098 /* RouraToolsTests.swift */,
+			);
+			path = RouraToolsTests;
+			sourceTree = "<group>";
+		};
+		03B7F8B92C13FE22004BC098 /* RouraToolsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				03B7F8BA2C13FE22004BC098 /* RouraToolsUITests.swift */,
+				03B7F8BC2C13FE22004BC098 /* RouraToolsUITestsLaunchTests.swift */,
+			);
+			path = RouraToolsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03B7F89A2C13FE20004BC098 /* RouraTools */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03B7F8C02C13FE22004BC098 /* Build configuration list for PBXNativeTarget "RouraTools" */;
+			buildPhases = (
+				03B7F8972C13FE20004BC098 /* Sources */,
+				03B7F8982C13FE20004BC098 /* Frameworks */,
+				03B7F8992C13FE20004BC098 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RouraTools;
+			productName = RouraTools;
+			productReference = 03B7F89B2C13FE20004BC098 /* RouraTools.app */;
+			productType = "com.apple.product-type.application";
+		};
+		03B7F8AB2C13FE21004BC098 /* RouraToolsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03B7F8C32C13FE22004BC098 /* Build configuration list for PBXNativeTarget "RouraToolsTests" */;
+			buildPhases = (
+				03B7F8A82C13FE21004BC098 /* Sources */,
+				03B7F8A92C13FE21004BC098 /* Frameworks */,
+				03B7F8AA2C13FE21004BC098 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03B7F8AE2C13FE21004BC098 /* PBXTargetDependency */,
+			);
+			name = RouraToolsTests;
+			productName = RouraToolsTests;
+			productReference = 03B7F8AC2C13FE21004BC098 /* RouraToolsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		03B7F8B52C13FE22004BC098 /* RouraToolsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03B7F8C62C13FE22004BC098 /* Build configuration list for PBXNativeTarget "RouraToolsUITests" */;
+			buildPhases = (
+				03B7F8B22C13FE22004BC098 /* Sources */,
+				03B7F8B32C13FE22004BC098 /* Frameworks */,
+				03B7F8B42C13FE22004BC098 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03B7F8B82C13FE22004BC098 /* PBXTargetDependency */,
+			);
+			name = RouraToolsUITests;
+			productName = RouraToolsUITests;
+			productReference = 03B7F8B62C13FE22004BC098 /* RouraToolsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03B7F8932C13FE20004BC098 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					03B7F89A2C13FE20004BC098 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					03B7F8AB2C13FE21004BC098 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 03B7F89A2C13FE20004BC098;
+					};
+					03B7F8B52C13FE22004BC098 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 03B7F89A2C13FE20004BC098;
+					};
+				};
+			};
+			buildConfigurationList = 03B7F8962C13FE20004BC098 /* Build configuration list for PBXProject "RouraTools" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 03B7F8922C13FE20004BC098;
+			productRefGroup = 03B7F89C2C13FE20004BC098 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03B7F89A2C13FE20004BC098 /* RouraTools */,
+				03B7F8AB2C13FE21004BC098 /* RouraToolsTests */,
+				03B7F8B52C13FE22004BC098 /* RouraToolsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03B7F8992C13FE20004BC098 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B7F8A72C13FE21004BC098 /* Preview Assets.xcassets in Resources */,
+				03B7F8A32C13FE21004BC098 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03B7F8AA2C13FE21004BC098 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03B7F8B42C13FE22004BC098 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03B7F8972C13FE20004BC098 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B7F8A12C13FE20004BC098 /* ContentView.swift in Sources */,
+				03B7F89F2C13FE20004BC098 /* RouraToolsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03B7F8A82C13FE21004BC098 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B7F8B12C13FE21004BC098 /* RouraToolsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03B7F8B22C13FE22004BC098 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B7F8BD2C13FE22004BC098 /* RouraToolsUITestsLaunchTests.swift in Sources */,
+				03B7F8BB2C13FE22004BC098 /* RouraToolsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03B7F8AE2C13FE21004BC098 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03B7F89A2C13FE20004BC098 /* RouraTools */;
+			targetProxy = 03B7F8AD2C13FE21004BC098 /* PBXContainerItemProxy */;
+		};
+		03B7F8B82C13FE22004BC098 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03B7F89A2C13FE20004BC098 /* RouraTools */;
+			targetProxy = 03B7F8B72C13FE22004BC098 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		03B7F8BE2C13FE22004BC098 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		03B7F8BF2C13FE22004BC098 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		03B7F8C12C13FE22004BC098 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RouraTools/RouraTools.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RouraTools/Preview Content\"";
+				DEVELOPMENT_TEAM = QNA2GYCBD6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.croura.RouraTools;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03B7F8C22C13FE22004BC098 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RouraTools/RouraTools.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RouraTools/Preview Content\"";
+				DEVELOPMENT_TEAM = QNA2GYCBD6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.croura.RouraTools;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		03B7F8C42C13FE22004BC098 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QNA2GYCBD6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.croura.RouraToolsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RouraTools.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RouraTools";
+			};
+			name = Debug;
+		};
+		03B7F8C52C13FE22004BC098 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QNA2GYCBD6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.croura.RouraToolsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RouraTools.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RouraTools";
+			};
+			name = Release;
+		};
+		03B7F8C72C13FE22004BC098 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QNA2GYCBD6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.croura.RouraToolsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RouraTools;
+			};
+			name = Debug;
+		};
+		03B7F8C82C13FE22004BC098 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QNA2GYCBD6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.croura.RouraToolsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RouraTools;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03B7F8962C13FE20004BC098 /* Build configuration list for PBXProject "RouraTools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B7F8BE2C13FE22004BC098 /* Debug */,
+				03B7F8BF2C13FE22004BC098 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03B7F8C02C13FE22004BC098 /* Build configuration list for PBXNativeTarget "RouraTools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B7F8C12C13FE22004BC098 /* Debug */,
+				03B7F8C22C13FE22004BC098 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03B7F8C32C13FE22004BC098 /* Build configuration list for PBXNativeTarget "RouraToolsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B7F8C42C13FE22004BC098 /* Debug */,
+				03B7F8C52C13FE22004BC098 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03B7F8C62C13FE22004BC098 /* Build configuration list for PBXNativeTarget "RouraToolsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B7F8C72C13FE22004BC098 /* Debug */,
+				03B7F8C82C13FE22004BC098 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 03B7F8932C13FE20004BC098 /* Project object */;
+}

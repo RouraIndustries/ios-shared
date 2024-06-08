@@ -11,7 +11,6 @@ import UIKit
 internal extension Shadow {
 
     struct Components: Equatable, ShadowProperties {
-
         let offset: CGSize
         let xOffset: CGFloat
         let yOffset: CGFloat

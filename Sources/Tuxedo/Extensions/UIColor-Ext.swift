@@ -10,11 +10,19 @@ import UIKit
 // MARK: - Convenience Initializers
 public extension UIColor {
 
-    class func rgb(_ r: UIColorComponent, _ g: UIColorComponent, _ b: UIColorComponent, _ a: UIColorAlphaComponent = 1.0) -> UIColor {
+    class func rgb(
+        _ r: UIColorComponent,
+        _ g: UIColorComponent,
+        _ b: UIColorComponent,
+        _ a: UIColorAlphaComponent = 1.0
+    ) -> UIColor {
         UIColor(red: r.rawValue, green: g.rawValue, blue: b.rawValue, alpha: a.rawValue)
     }
 
-    class func w(_ w: UIColorComponent, _ a: UIColorAlphaComponent = 1.0) -> UIColor {
+    class func w(
+        _ w: UIColorComponent,
+        _ a: UIColorAlphaComponent = 1.0
+    ) -> UIColor {
         UIColor(white: w.rawValue, alpha: a.rawValue)
     }
 }

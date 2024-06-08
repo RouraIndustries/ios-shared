@@ -1,6 +1,6 @@
 //
 //  UIView-Ext.swift
-//  
+//
 //
 //  Created by Christopher J. Roura on 6/7/24.
 //
@@ -11,23 +11,24 @@ import UIKit
 public extension UIView {
 
     /// Apply a shadow to the view using one of our pre-defined Design System `Shadow` styles
+    /// - Parameters:
+    ///    - shadow: The predefined `Shadow` style to apply.
     func applyShadow(_ shadow: Shadow) {
         shadowComponents = shadow.components
     }
 
     /// Apply a shadow using custom properties.
     ///
-    /// > NOTE: This method should be used sparingly, and only when absolutely needed. Most shadows should be able to
+    /// NOTE: This method should be used sparingly, and only when absolutely needed. Most shadows should be able to
     /// use a pre-defined `Shadow` style until we're able to get to a point where we have a preset for all use cases.
-    ///
     /// - Parameters:
-    ///   - xOffset: The horizontal offset to apply to the shadow.
-    ///   - yOffset: The vertical offset to apply to the shadow.
-    ///   - blur: The diameter of the shadow. This value should match 1:1 with what is displayed in Figma, and will be
-    ///   cut in half when rendering through `shadowRadius`.
-    ///   - color: A `UIColor` to derive `CGColor` from to apply to the `shadowColor`.
+    ///   - xOffset: The horizontal offset of the shadow.
+    ///   - yOffset: The vertical offset of the shadow.
+    ///   - blur: The blur radius of the shadow.
+    ///   - color: The color of the shadow.
+    /// - Returns: A view with the custom shadow applied.
     func applyShadow(xOffset: CGFloat, yOffset: CGFloat, blur: CGFloat, color: UIColor) {
-
+        
         shadowComponents = Shadow.Components(
             xOffset: xOffset,
             yOffset: yOffset,

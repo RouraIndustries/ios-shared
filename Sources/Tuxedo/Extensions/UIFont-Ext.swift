@@ -5,6 +5,7 @@
 //  Created by Christopher J. Roura on 6/7/24.
 //
 
+import RouraFoundation
 import UIKit
 
 public extension UIFont {
@@ -18,9 +19,15 @@ public extension UIFont {
     ///   - useScaledFont: Whether or not you want to support Dynamic Type.  By default, this is `true` which means the returned font will scale based
     ///   on the user's Dynamic Type font settings.
     /// - Returns: A font reflecting the given parameters
-    static func font(style: RouraFontStyle,
-                     fontFamily: RouraFontFamily = .montserrat,
-                     useScaledFont: Bool = true) -> UIFont {
+    static func font(
+        style: RouraFontStyle,
+        fontFamily: RouraFontFamily = .montserrat,
+        useScaledFont: Bool = true
+    ) -> UIFont {
+        
+        if !didRegisterCutomFonts {
+            registerCustomFonts()
+        }
 
         let components = style.components(for: fontFamily)
         return font(with: components, useScaledFont: useScaledFont)
@@ -62,7 +69,7 @@ private extension UIFont {
     static func registerCustomFonts() {
         let fontsRequiringRegistration = RouraFontName.allCases.filter { $0.requiresRegistration }
         for font in fontsRequiringRegistration {
-            guard let url = Bundle.main.url(forResource: font.rawValue, withExtension: "ttf") else {
+            guard let url = Bundle.module.url(forResource: font.rawValue, withExtension: "ttf") else {
                 Log.nonfatal(.unavailableFont(name: font.rawValue))
                 continue
             }
@@ -70,48 +77,6 @@ private extension UIFont {
         }
 
         didRegisterCutomFonts = true
-    }
-}
-
-// MARK: - Font Definitions
-
-/// Defines the  fonts that we are currently working with in shipping apps.  We will eventually switch everything to `montserrat`.
-public enum RouraFontFamily {
-    case lexend
-    case montserrat
-}
-
-/// Defines the font names for different font weights.
-public enum RouraFontName: String, CaseIterable {
-    // Lexend styles
-    case lexendThin = "Lexend-Thin"
-    case lexendExtraLight = "Lexend-ExtraLight"
-    case lexendMedium = "Lexend-Medium"
-    case lexendBold = "Lexend-Bold"
-
-    // Montserrat Styles
-    case montserratRegular = "Montserrat-Regular"
-    case montserratSemiBold = "Montserrat-SemiBold"
-    case montserratExtraBold = "Montserrat-ExtraBold"
-
-    var requiresRegistration: Bool {
-        switch self {
-        case .montserratRegular, .montserratSemiBold, .montserratExtraBold: return true
-        case .lexendThin, .lexendExtraLight, .lexendMedium, .lexendBold: return true
-        }
-    }
-}
-
-/// The necessary components that make up a specific `UIFont` within the Roura design system.
-public struct FontComponents {
-    public let fontName: RouraFontName
-    public let pointSize: CGFloat
-    public let textStyle: UIFont.TextStyle
-
-    public init(fontName: RouraFontName, pointSize: CGFloat, textStyle: UIFont.TextStyle) {
-        self.fontName = fontName
-        self.pointSize = pointSize
-        self.textStyle = textStyle
     }
 }
 
