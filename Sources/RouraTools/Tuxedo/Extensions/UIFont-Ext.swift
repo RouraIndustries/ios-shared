@@ -21,6 +21,10 @@ public extension UIFont {
     static func font(style: RouraFontStyle,
                      fontFamily: RouraFontFamily = .montserrat,
                      useScaledFont: Bool = true) -> UIFont {
+        
+        if !didRegisterCutomFonts {
+            registerCustomFonts()
+        }
 
         let components = style.components(for: fontFamily)
         return font(with: components, useScaledFont: useScaledFont)

@@ -22,32 +22,7 @@ public extension Font {
      - Note: Due to naming collisions between Roura font styles and SwiftUI.Font (e.g., `Font.caption`), we access custom fonts through this method instead of defining them via static vars. Static var overrides may cause errors when rendering Previews.
      */
     static func rouraFont(_ fontStyle: RouraFontStyle, fontFamily: RouraFontFamily = .montserrat, useScaledFont: Bool = true) -> Font {
-        if !didRegisterCutomFonts {
-            registerCustomFonts()
-        }
-
-        return Font(UIFont.font(style: fontStyle, fontFamily: fontFamily, useScaledFont: useScaledFont))
-    }
-}
-
-// MARK: - Helper Methods
-
-private extension Font {
-    static var didRegisterCutomFonts: Bool = false
-
-    /// This method must be called before you can use any non-system / custom font returned by any of the public `font()` methods.  Specifically, this means
-    /// if you are using `monterrat`, you must call this method first (`avenir` is supplied by the OS).
-    static func registerCustomFonts() {
-        let fontsRequiringRegistration = RouraFontName.allCases.filter { $0.requiresRegistration }
-        for font in fontsRequiringRegistration {
-            guard let url = Bundle.main.url(forResource: font.rawValue, withExtension: "ttf") else {
-                Log.nonfatal(.unavailableFont(name: font.rawValue))
-                continue
-            }
-            CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
-        }
-
-        didRegisterCutomFonts = true
+        Font(UIFont.font(style: fontStyle, fontFamily: fontFamily, useScaledFont: useScaledFont))
     }
 }
 
