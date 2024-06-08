@@ -114,10 +114,6 @@ public extension Font {
     ///   on the user's Dynamic Type font settings.
     /// - Returns: A font reflecting the given parameters
     static func font(with components: FontComponents, useScaledFont: Bool) -> Font {
-        if !didRegisterCutomFonts {
-            registerCustomFonts()
-        }
-
         let fontName = components.fontName.rawValue
         return Font.custom(fontName, size: components.pointSize, relativeTo: components.swiftUITextStyle)
     }
