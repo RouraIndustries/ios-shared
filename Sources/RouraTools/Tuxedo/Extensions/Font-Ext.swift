@@ -210,7 +210,7 @@ extension Font {
     }
 }
 
-extension Font {
+public extension Font {
     static let tuxedoTiny: Font = font(for: RouraFontStyle.tiny.components(for: .montserrat))
     static let tuxedoCaption: Font = font(for: RouraFontStyle.caption.components(for: .montserrat))
     static let tuxedoCaptionBold: Font = font(for: RouraFontStyle.captionBold.components(for: .montserrat))
