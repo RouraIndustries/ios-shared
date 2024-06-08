@@ -74,6 +74,9 @@ public extension Color {
     @RouraColor(uiColor: .redTint08) static var redTint08: Color
 
     @RouraColor(uiColor: .shadow) static var shadow: Color
+    @RouraColor(uiColor: .shadow75) static var shadow75: Color
+    @RouraColor(uiColor: .shadow35) static var shadow35: Color
+
     @RouraColor(uiColor: .overlayDark) static var overlayDark: Color
     @RouraColor(uiColor: .overlay) static var overlay: Color
     @RouraColor(uiColor: .alwaysWhite) static var alwaysWhite: Color
@@ -116,6 +119,9 @@ public extension ShapeStyle where Self == Color {
     static var redTint08: Color { Color.redTint08 }
 
     static var shadow: Color { Color.shadow }
+    static var shadow75: Color { Color.shadow75 }
+    static var shadow35: Color { Color.shadow35 }
+
     static var overlayDark: Color { Color.overlayDark }
     static var overlay: Color { Color.overlay }
     static var alwaysWhite: Color { Color.alwaysWhite }

@@ -44,8 +44,12 @@ public enum SemanticColor: CaseIterable {
     case redTint08
 
     case shadow
+    case shadow75
+    case shadow35
+
     case overlayDark
     case overlay
+
     case alwaysWhite
 }
 
@@ -226,6 +230,15 @@ internal extension SemanticColor {
             lightValue: .black1, lightAlpha: 0.16,
             darkValue: .black0, darkAlpha: 0.95
         )
+        case .shadow75: return Components(
+            lightValue: .black1, lightAlpha: 0.12,
+            darkValue: .black0, darkAlpha: 0.71
+        )
+        case .shadow35: return Components(
+            lightValue: .black1, lightAlpha: 0.06,
+            darkValue: .black0, darkAlpha: 0.33
+        )
+
         case .overlayDark: return Components(
             lightValue: .black4, lightAlpha: 0.16,
             darkValue: .black0, darkAlpha: 0.75

@@ -42,7 +42,7 @@ public enum Shadow {
                 xOffset: isPressed ? -4.0 : 8.0,
                 yOffset: isPressed ? -4.0 : 8.0,
                 blur: isPressed ? 8.0 : 16.0,
-                color: .shadow.withAlphaComponent(isPressed ? 0.35 : 0.75)
+                color: isPressed ? UIColor.shadow35 : .shadow75
             )
 
         case .neumorphicBottom(let isPressed): 

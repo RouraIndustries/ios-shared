@@ -162,6 +162,9 @@ public extension UIColor {
     @RouraUIColor(semanticColor: .redTint08) @objc static var redTint08: UIColor
 
     @RouraUIColor(semanticColor: .shadow) @objc static var shadow: UIColor
+    @RouraUIColor(semanticColor: .shadow75) @objc static var shadow75: UIColor
+    @RouraUIColor(semanticColor: .shadow35) @objc static var shadow35: UIColor
+
     @RouraUIColor(semanticColor: .overlayDark) @objc static var overlayDark: UIColor
     @RouraUIColor(semanticColor: .overlay) @objc static var overlay: UIColor
     @RouraUIColor(semanticColor: .alwaysWhite) @objc static var alwaysWhite: UIColor
