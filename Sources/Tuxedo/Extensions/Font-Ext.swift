@@ -56,10 +56,35 @@ public extension Font {
     /// - Returns: A font reflecting the given parameters
     static func font(with components: FontComponents, useScaledFont: Bool, option: FontOption? = nil) -> Font {
 
+        if !didRegisterCutomFonts {
+            registerCustomFonts()
+        }
+        
         let fontName = components.fontName.rawValue
         let fontSize = components.pointSize
 
         return useScaledFont ? Font.custom(fontName, size: fontSize, relativeTo: components.swiftUITextStyle) : Font.custom(fontName, fixedSize: fontSize)
+    }
+}
+
+// MARK: - Helper Methods
+
+private extension Font {
+    static var didRegisterCutomFonts: Bool = false
+
+    /// This method must be called before you can use any non-system / custom font returned by any of the public `font()` methods.  Specifically, this means
+    /// if you are using `monterrat`, you must call this method first (`avenir` is supplied by the OS).
+    static func registerCustomFonts() {
+        let fontsRequiringRegistration = RouraFontName.allCases.filter { $0.requiresRegistration }
+        for font in fontsRequiringRegistration {
+            guard let url = Bundle.module.url(forResource: font.rawValue, withExtension: "ttf") else {
+                Log.nonfatal(.unavailableFont(name: font.rawValue))
+                continue
+            }
+            CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
+        }
+
+        didRegisterCutomFonts = true
     }
 }
 
