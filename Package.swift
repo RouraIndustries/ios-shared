@@ -22,13 +22,13 @@ let package = Package(
         .target(
             name: "RouraTools",
             resources: [
-                .process("Tuxedo/Assets/Fonts/Lexend-Bold.ttf"),
-                .process("Tuxedo/Assets/Fonts/Lexend-ExtraLight.ttf"),
-                .process("Tuxedo/Assets/Fonts/Lexend-Medium.ttf"),
-                .process("Tuxedo/Assets/Fonts/Lexend-Thin.ttf"),
-                .process("Tuxedo/Assets/Fonts/Montserrat-ExtraBold.ttf"),
-                .process("Tuxedo/Assets/Fonts/Montserrat-SemiBold.ttf"),
-                .process("Tuxedo/Assets/Fonts/Montserrat-Regular.ttf")
+                .process("Assets/Fonts/Lexend-Bold.ttf"),
+                .process("Assets/Fonts/Lexend-ExtraLight.ttf"),
+                .process("Assets/Fonts/Lexend-Medium.ttf"),
+                .process("Assets/Fonts/Lexend-Thin.ttf"),
+                .process("Assets/Fonts/Montserrat-ExtraBold.ttf"),
+                .process("Assets/Fonts/Montserrat-SemiBold.ttf"),
+                .process("Assets/Fonts/Montserrat-Regular.ttf")
             ]
         ),
         .testTarget(
