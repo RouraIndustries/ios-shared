@@ -67,7 +67,7 @@ private extension UIFont {
     static func registerCustomFonts() {
         let fontsRequiringRegistration = RouraFontName.allCases.filter { $0.requiresRegistration }
         for font in fontsRequiringRegistration {
-            guard let url = Bundle.main.url(forResource: font.rawValue, withExtension: "ttf") else {
+            guard let url = Bundle.module.url(forResource: font.rawValue, withExtension: "ttf") else {
                 Log.nonfatal(.unavailableFont(name: font.rawValue))
                 continue
             }
